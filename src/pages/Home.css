@@ -1,0 +1,31 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Senza min-width:0 una card con testo lungo (in alcune lingue) spinge la
+   sua colonna oltre la sua quota 1fr, sbilanciando la griglia verso destra
+   invece di restare centrata. */
+.card-grid .nav-card {
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.where-section {
+  margin-top: 56px;
+}
+
+.where-title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--color-text);
+  margin: 0 0 16px;
+  text-align: left;
+}

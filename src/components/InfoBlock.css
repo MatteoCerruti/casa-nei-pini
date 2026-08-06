@@ -1,0 +1,60 @@
+.info-block {
+  margin-bottom: 40px;
+}
+
+.info-block:last-of-type {
+  margin-bottom: 0;
+}
+
+.info-block-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--color-text);
+  margin: 0 0 8px;
+}
+
+.info-block-icon {
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.info-block-text {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.info-block-text a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.info-block-text strong {
+  font-weight: 700;
+}
+
+.info-block-code {
+  display: inline-block;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.875rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+.info-block-important .info-block-label {
+  color: var(--color-accent);
+}
+
+.info-block-important .info-block-icon {
+  color: var(--color-accent);
+}

@@ -1,0 +1,58 @@
+.bin-map .map-frame {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.bin-map .map-frame .leaflet-container {
+  font-family: var(--font-body);
+}
+
+.bin-map .map-open-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  transition: background var(--transition-fast);
+}
+
+.bin-map .map-open-btn:hover {
+  background: var(--color-accent-dark);
+}
+
+/* Pin case/bidoni: goccia piena, stessa forma del pin principale del sito
+   ma due colori diversi per distinguere casa e bidone a colpo d'occhio. */
+.bin-map-pin {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bin-map-pin svg {
+  transform: rotate(45deg);
+}
+
+.bin-map-pin-house {
+  background: var(--color-accent);
+}
+
+.bin-map-pin-bin {
+  background: #2E7D32;
+}

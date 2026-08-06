@@ -1,0 +1,39 @@
+.inline-photo {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: 280px;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 12px 0 0;
+  transition: transform var(--transition-fast);
+}
+
+.inline-photo:hover,
+.inline-photo:focus-visible {
+  transform: scale(1.03);
+}
+
+.inline-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Foto molto panoramica: mostra sempre tutta la larghezza, mai ritagliata.
+   Su desktop (vedi SectionShell.css) l'altezza viene fissata per allinearla
+   a quella a sinistra e la larghezza si restringe di conseguenza. */
+.inline-photo-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inline-photo-wide {
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 1280 / 628;
+}

@@ -1,0 +1,128 @@
+.contact-card {
+  background: var(--color-bg);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Contenitore non tagliato: la foto ha il proprio overflow:hidden,
+   il badge cornetta resta fuori e non viene mai ritagliato. */
+.contact-card-avatar {
+  position: relative;
+  width: 52px;
+  height: 52px;
+}
+
+.contact-card-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.contact-card-avatar-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-card-badge {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  border: 2px solid var(--color-bg);
+}
+
+.contact-card-name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.contact-card-mail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  height: 16px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-card-mail svg {
+  flex-shrink: 0;
+}
+
+.contact-card-mail-text {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.contact-card-mail-empty {
+  text-decoration: none;
+}
+
+.contact-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.contact-card-call,
+.contact-card-wa {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  border: none;
+  transition: background var(--transition-fast);
+}
+
+.contact-card-call {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.contact-card-call:hover {
+  background: var(--color-muted);
+}
+
+.contact-card-wa {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.contact-card-wa:hover {
+  background: var(--color-accent-dark);
+}
