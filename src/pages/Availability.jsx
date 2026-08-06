@@ -48,19 +48,20 @@ function Availability() {
     };
   }, []);
 
-  const isBlocked = useMemo(() => {
-    if (!blocked) return () => false;
-    return (date) => {
-      const iso = toIsoDate(date);
-      return blocked.some((range) => iso >= range.start && iso < range.end);
-    };
-  }, [blocked]);
-
   const today = useMemo(() => {
     const d = new Date();
     d.setHours(0, 0, 0, 0);
     return d;
   }, []);
+
+  const isBlocked = useMemo(() => {
+    if (!blocked) return () => false;
+    return (date) => {
+      if (date < today) return true;
+      const iso = toIsoDate(date);
+      return blocked.some((range) => iso >= range.start && iso < range.end);
+    };
+  }, [blocked, today]);
 
   const months = useMemo(() => {
     const list = [];
