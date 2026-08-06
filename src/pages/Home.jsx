@@ -15,6 +15,7 @@ const SECTION_KEYS = [
   "parking",
   "contacts",
   "dintorni",
+  "faq",
 ];
 
 function Home() {

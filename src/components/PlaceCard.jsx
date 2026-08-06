@@ -1,4 +1,4 @@
-import { MapPin as PinIcon, Phone } from "lucide-react";
+import { MapPin as PinIcon, Phone, ExternalLink } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 import "./PlaceCard.css";
 
@@ -11,7 +11,17 @@ function PlaceCard({ icon: Icon, name, address, phone, desc, mapsUrl }) {
       <div className="place-card-body">
         <h3 className="place-card-name">
           <Icon className="place-card-name-icon" size={18} strokeWidth={1.75} />
-          {name}
+          <span>{name}</span>
+          <a
+            className="place-card-maps-link"
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.common.openInMapsShort}
+            title={t.common.openInMapsShort}
+          >
+            <ExternalLink size={14} strokeWidth={1.75} />
+          </a>
         </h3>
         {(address || phone) && (
           <p className="place-card-meta">
@@ -31,9 +41,6 @@ function PlaceCard({ icon: Icon, name, address, phone, desc, mapsUrl }) {
         )}
         {desc && <p className="place-card-desc">{desc}</p>}
       </div>
-      <a className="place-card-cta" href={mapsUrl} target="_blank" rel="noopener noreferrer">
-        {t.common.openInMapsShort} →
-      </a>
     </div>
   );
 }

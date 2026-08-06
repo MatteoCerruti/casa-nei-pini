@@ -48,6 +48,7 @@ const en = {
     parking: { title: "Parking", desc: "Where to leave your car" },
     contacts: { title: "Contacts", desc: "Useful numbers and assistance" },
     dintorni: { title: "Nearby", desc: "Restaurants, beaches and places to discover" },
+    faq: { title: "FAQ", desc: "Frequently asked questions" },
   },
   pages: {
     checkin: {
@@ -160,6 +161,7 @@ const en = {
         pescoei: "Seafood bistro in the old town.",
         gattoNero: "Café-bar right in the center with outdoor tables on the square. Great breakfast, croissants, burgers, sandwiches, aperitivo and gin tonics. Young, friendly staff.",
         ebrezza: "Wine bar on a small square in the old town. Breakfast with croissants, aperitivo with boards and snacks, cocktails. Large outdoor seating area.",
+        laBeffa: "Café in the old town, on Piazza Fabrizio de André, just steps from Piazza Dante.",
         daRettaAllaMola: "On the seafront, great for breakfast with a sea view. Fresh croissants, coffee, aperitivo cocktails.",
         lungomareEuropa: "4.5 km promenade lined with pines and oleanders. Free stretches, lit at night. Bike and skate rental along the way.",
         spiaggePonente: "Long sandy stretch, ideal for families.",
@@ -179,6 +181,53 @@ const en = {
         savona: "Priamar Fortress, old town, shopping, 15 minutes by car.",
         genova: "Porto Antico, one of Europe's largest aquariums, UNESCO-listed caruggi, the Lanterna lighthouse. 35 minutes by car or direct train.",
       },
+    },
+    faq: {
+      title: "FAQ",
+      subtitle: "Answers to the most common questions",
+      items: [],
+      groups: [
+        {
+          title: "Arrival & Check-in",
+          questions: [
+            { q: "What time can I check in?", a: "Check-in is from 3:00 PM. For special needs, contact us in advance and we'll do our best to accommodate you." },
+            { q: "How do I get the keys?", a: "The code for the lockbox (which contains the front door keys) is sent to you via WhatsApp 24 hours before arrival." },
+            { q: "Do I need to send documents before arriving?", a: "Yes, we ask for photos of all guests' ID documents via WhatsApp or through the booking platform, before arrival." },
+            { q: "Where do I park?", a: "Parking spot number 1 is included in the price. There's also a red zone nearby where you can park freely. Detailed directions are in the Parking section." },
+            { q: "Is there a tourist tax?", a: "From April 1st to October 31st, a tax of €1.50 per person per night (age 12+) applies for the first 5 nights. It's paid at check-in. For any exemptions, refer to the municipal regulations." },
+          ],
+        },
+        {
+          title: "During your stay",
+          questions: [
+            { q: "What's the WiFi password?", a: "WiFi is not currently available in the apartment. We'll update this page as soon as it's active." },
+            { q: "Is there air conditioning?", a: "No, the apartment is not equipped with air conditioning." },
+            { q: "Can I use the washing machine and dishwasher?", a: "Yes, both are in the kitchen to the left of the fridge. Free to use." },
+            { q: "How does the heating work?", a: "Heating is independent. The thermostat is near the front door — adjust it as you like." },
+            { q: "There's no hot water, what do I do?", a: "The gas water heater is in the kitchen cabinet next to the sink. If it stops, press the button with the red light to reset it." },
+            { q: "Are there fans?", a: "Yes, every bedroom has adjustable fans with a remote control." },
+            { q: "Can I bring pets?", a: "Yes, well-behaved pets are welcome." },
+            { q: "How many people can stay?", a: "The apartment can host up to 8 people." },
+            { q: "Can I smoke inside?", a: "Smoking inside the apartment is not allowed." },
+            { q: "Are there extra blankets?", a: "Yes, you'll find extra blankets in the bedrooms. If you use them, leave them on the bed before you leave." },
+          ],
+        },
+        {
+          title: "Check-out",
+          questions: [
+            { q: "What time do I need to leave?", a: "Check-out is by 10:00 AM." },
+            { q: "Where do I leave the keys?", a: "In the outdoor mailbox labeled \"Casa nei Pini\", outside the front entrance." },
+            { q: "What do I need to do before leaving?", a: "Please: wash the dishes or put them in the dishwasher, leave used towels in the designated container, used blankets on the bed, put the keys back in the mailbox, and send us a message once you've left." },
+          ],
+        },
+        {
+          title: "Emergencies & contacts",
+          questions: [
+            { q: "Who do I contact if there's a problem?", a: "Matteo: +39 348 113 8760 (also WhatsApp) — Fabio: +39 347 427 6545. Email: mcerruti00@gmail.com" },
+            { q: "How do I handle the trash?", a: "For stays of 1-2 nights: use the container outside the front door. For longer stays: use the blue electronic key (given with the keys) for the nearest bins. You'll find maps in the Trash section." },
+          ],
+        },
+      ],
     },
   },
 };

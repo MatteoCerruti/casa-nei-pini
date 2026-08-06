@@ -2,6 +2,7 @@ import { MapPin, Pizza, Fish, Coffee, Umbrella, ShoppingCart, Compass } from "lu
 import { useLanguage } from "../LanguageContext";
 import SectionShell from "../components/SectionShell";
 import PlaceCard from "../components/PlaceCard";
+import CategoryMap from "../components/CategoryMap";
 import nearbyPlaces from "../nearbyPlaces";
 import "./Dintorni.css";
 
@@ -36,6 +37,7 @@ function Dintorni() {
               <Icon size={18} strokeWidth={1.75} />
               {p.categories[category.id].title}
             </h2>
+            <CategoryMap places={category.places} />
             <div className="dintorni-place-list">
               {category.places.map((place) => (
                 <PlaceCard

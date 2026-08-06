@@ -48,6 +48,7 @@ const fr = {
     parking: { title: "Parking", desc: "Où garer la voiture" },
     contacts: { title: "Contacts", desc: "Numéros utiles et assistance" },
     dintorni: { title: "Environs", desc: "Restaurants, plages et lieux à découvrir" },
+    faq: { title: "FAQ", desc: "Questions fréquentes" },
   },
   pages: {
     checkin: {
@@ -160,6 +161,7 @@ const fr = {
         pescoei: "Bistrot de poisson dans le centre historique.",
         gattoNero: "Bar-café en plein centre avec tables en terrasse sur la place. Excellent petit-déjeuner, viennoiseries, burgers, sandwichs, apéritifs et gin tonics. Personnel jeune et disponible.",
         ebrezza: "Cave à vin et wine bar sur une petite place du centre historique. Petit-déjeuner avec viennoiseries, apéritifs avec planches et amuse-bouches, cocktails. Grande terrasse extérieure.",
+        laBeffa: "Bar dans le centre historique, sur la Piazza Fabrizio de André, à deux pas de la Piazza Dante.",
         daRettaAllaMola: "Sur le front de mer, parfait pour un petit-déjeuner avec vue sur la mer. Viennoiseries fraîches, café, cocktails pour l'apéritif.",
         lungomareEuropa: "4,5 km de promenade entre pins et lauriers-roses. Tronçons libres, éclairée la nuit. Location de vélos et de patins tout le long.",
         spiaggePonente: "Longue étendue de sable, idéale pour les familles.",
@@ -179,6 +181,53 @@ const fr = {
         savona: "Forteresse du Priamar, centre historique, shopping, à 15 minutes en voiture.",
         genova: "Porto Antico, l'un des plus grands aquariums d'Europe, caruggi classés UNESCO, la Lanterna. À 35 minutes en voiture ou en train direct.",
       },
+    },
+    faq: {
+      title: "FAQ",
+      subtitle: "Les réponses aux questions les plus fréquentes",
+      items: [],
+      groups: [
+        {
+          title: "Arrivée et Check-in",
+          questions: [
+            { q: "À quelle heure puis-je faire le check-in ?", a: "L'arrivée est possible à partir de 15h00. Pour des besoins particuliers, contactez-nous à l'avance, nous ferons de notre mieux pour vous accommoder." },
+            { q: "Comment reçois-je les clés ?", a: "Le code de la boîte à clés (qui contient les clés de la porte d'entrée) vous est envoyé par WhatsApp 24 heures avant l'arrivée." },
+            { q: "Dois-je envoyer mes documents avant d'arriver ?", a: "Oui, nous vous demandons les photos des pièces d'identité de tous les hôtes par WhatsApp ou via la plateforme de réservation, avant l'arrivée." },
+            { q: "Où puis-je me garer ?", a: "La place de parking numéro 1 est incluse dans le prix. Il y a aussi une zone rouge à proximité où l'on peut se garer librement. Vous trouverez les indications détaillées dans la section Parking." },
+            { q: "Y a-t-il une taxe de séjour ?", a: "Du 1er avril au 31 octobre, une taxe de 1,50€ par personne et par nuit (à partir de 12 ans) s'applique pour les 5 premières nuits. Elle se règle à l'arrivée. Pour d'éventuelles exonérations, se référer au règlement municipal." },
+          ],
+        },
+        {
+          title: "Pendant le séjour",
+          questions: [
+            { q: "Quel est le mot de passe du WiFi ?", a: "Le WiFi n'est actuellement pas disponible dans l'appartement. Nous mettrons à jour cette page dès qu'il sera actif." },
+            { q: "Y a-t-il la climatisation ?", a: "Non, l'appartement n'est pas équipé de climatisation." },
+            { q: "Puis-je utiliser le lave-linge et le lave-vaisselle ?", a: "Oui, tous deux sont dans la cuisine à gauche du réfrigérateur, librement disponibles." },
+            { q: "Comment fonctionne le chauffage ?", a: "Le chauffage est autonome. Le thermostat se trouve près de la porte d'entrée, réglez-le à votre convenance." },
+            { q: "Il n'y a pas d'eau chaude, que faire ?", a: "Le chauffe-eau à gaz se trouve dans le placard de la cuisine à côté de l'évier. En cas de blocage, appuyez sur le bouton avec le voyant rouge pour le réactiver." },
+            { q: "Y a-t-il des ventilateurs ?", a: "Oui, chaque chambre dispose de ventilateurs réglables avec télécommande." },
+            { q: "Puis-je amener des animaux domestiques ?", a: "Oui, les animaux bien élevés sont les bienvenus." },
+            { q: "Combien de personnes peuvent séjourner ?", a: "L'appartement peut accueillir jusqu'à 8 personnes." },
+            { q: "Peut-on fumer à l'intérieur ?", a: "Il est interdit de fumer à l'intérieur de l'appartement." },
+            { q: "Y a-t-il des couvertures supplémentaires ?", a: "Oui, vous trouverez des couvertures supplémentaires dans les chambres. Si vous les utilisez, laissez-les sur le lit avant de partir." },
+          ],
+        },
+        {
+          title: "Départ",
+          questions: [
+            { q: "À quelle heure dois-je quitter l'appartement ?", a: "Le départ doit avoir lieu avant 10h00." },
+            { q: "Où dois-je laisser les clés ?", a: "Dans la boîte aux lettres extérieure intitulée \"Casa nei Pini\", à l'extérieur de l'entrée." },
+            { q: "Que dois-je faire avant de partir ?", a: "Merci de : laver la vaisselle ou la mettre au lave-vaisselle, laisser les serviettes utilisées dans le conteneur prévu, les couvertures utilisées sur le lit, remettre les clés dans la boîte aux lettres, et nous envoyer un message une fois parti." },
+          ],
+        },
+        {
+          title: "Urgences et contacts",
+          questions: [
+            { q: "Qui contacter en cas de problème ?", a: "Matteo : +39 348 113 8760 (aussi WhatsApp) — Fabio : +39 347 427 6545. Email : mcerruti00@gmail.com" },
+            { q: "Comment gérer les déchets ?", a: "Pour les séjours de 1-2 nuits : utilisez le conteneur devant la porte d'entrée. Pour les séjours plus longs : utilisez la clé électronique bleue (remise avec les clés) pour les bennes les plus proches. Vous trouverez les cartes dans la section Déchets." },
+          ],
+        },
+      ],
     },
   },
 };

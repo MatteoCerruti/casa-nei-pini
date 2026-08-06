@@ -14,6 +14,7 @@ import Trash from "./pages/Trash";
 import Parking from "./pages/Parking";
 import Contacts from "./pages/Contacts";
 import Dintorni from "./pages/Dintorni";
+import Faq from "./pages/Faq";
 import "./App.css";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
               <Route path="/parking" element={<Parking />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/dintorni" element={<Dintorni />} />
+              <Route path="/faq" element={<Faq />} />
             </Route>
           </Routes>
         </BrowserRouter>

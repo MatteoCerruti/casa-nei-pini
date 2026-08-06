@@ -1,4 +1,4 @@
-import { KeyRound, LogOut, Wifi, ClipboardList, Home, Info, Trash2, ParkingCircle, Phone, MapPin } from "lucide-react";
+import { KeyRound, LogOut, Wifi, ClipboardList, Home, Info, Trash2, ParkingCircle, Phone, MapPin, HelpCircle } from "lucide-react";
 
 const sectionIcons = {
   checkin: KeyRound,
@@ -11,6 +11,7 @@ const sectionIcons = {
   parking: ParkingCircle,
   contacts: Phone,
   dintorni: MapPin,
+  faq: HelpCircle,
 };
 
 export default sectionIcons;

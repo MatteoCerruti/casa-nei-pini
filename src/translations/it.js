@@ -48,6 +48,7 @@ const it = {
     parking: { title: "Parcheggio", desc: "Dove lasciare l'auto" },
     contacts: { title: "Contatti", desc: "Numeri utili e assistenza" },
     dintorni: { title: "Dintorni", desc: "Ristoranti, spiagge e luoghi da scoprire" },
+    faq: { title: "FAQ", desc: "Le domande più frequenti" },
   },
   pages: {
     checkin: {
@@ -160,6 +161,7 @@ const it = {
         pescoei: "Bistrot di pesce nel centro storico.",
         gattoNero: "Bar caffetteria in pieno centro con tavolini all'aperto in piazza. Ottima colazione, brioches, hamburger, panini, aperitivi e gin tonic. Staff giovane e disponibile.",
         ebrezza: "Enoteca e wine bar in piazzetta nel centro storico. Colazione con brioche, aperitivi con taglieri e stuzzichini, cocktail. Ampio dehors esterno.",
+        laBeffa: "Bar nel centro storico, su Piazza Fabrizio de André, a due passi da Piazza Dante.",
         daRettaAllaMola: "Sul lungomare, ottimo per colazione vista mare. Brioches fresche, caffè, cocktail per aperitivo.",
         lungomareEuropa: "4,5 km di passeggiata tra pini e oleandri. Tratti liberi, illuminata di notte. Noleggio bici e pattini lungo il percorso.",
         spiaggePonente: "Lunga distesa sabbiosa, ideale per famiglie.",
@@ -179,6 +181,53 @@ const it = {
         savona: "Fortezza del Priamar, centro storico, shopping, a 15 minuti in auto.",
         genova: "Porto Antico, Acquario tra i più grandi d'Europa, caruggi UNESCO, Lanterna. A 35 minuti in auto o treno diretto.",
       },
+    },
+    faq: {
+      title: "FAQ",
+      subtitle: "Le risposte alle domande più frequenti",
+      items: [],
+      groups: [
+        {
+          title: "Arrivo e Check-in",
+          questions: [
+            { q: "A che ora posso fare il check-in?", a: "Il check-in è dalle ore 15:00. Per esigenze particolari contattateci in anticipo, faremo del nostro meglio per venirvi incontro." },
+            { q: "Come ricevo le chiavi?", a: "Il codice per la cassetta di sicurezza (che contiene le chiavi della porta d'ingresso) vi viene inviato via WhatsApp 24 ore prima dell'arrivo." },
+            { q: "Devo inviare i documenti prima di arrivare?", a: "Sì, vi chiediamo le foto dei documenti di tutti gli ospiti via WhatsApp o tramite la piattaforma di prenotazione, prima dell'arrivo." },
+            { q: "Dove parcheggio?", a: "Avete il posto auto numero 1 incluso nel prezzo. C'è anche una zona rossa nelle vicinanze dove si può parcheggiare liberamente. Trovate le indicazioni dettagliate nella sezione Parcheggio." },
+            { q: "C'è l'imposta di soggiorno?", a: "Nel periodo 01/04–31/10, per i primi 5 pernottamenti è dovuta un'imposta di 1,50€ a persona per notte (dai 12 anni compiuti). Si versa al check-in. Per eventuali esenzioni si rimanda al regolamento comunale." },
+          ],
+        },
+        {
+          title: "Durante il soggiorno",
+          questions: [
+            { q: "Qual è la password del WiFi?", a: "Il WiFi non è al momento disponibile in appartamento. Aggiorneremo questa pagina non appena sarà attivo." },
+            { q: "Ci sono i condizionatori?", a: "No, l'appartamento non è dotato di condizionatori." },
+            { q: "Posso usare lavatrice e lavastoviglie?", a: "Sì, entrambe sono in cucina a sinistra del frigorifero. Liberamente disponibili." },
+            { q: "Come funziona il riscaldamento?", a: "Il riscaldamento è autonomo. Il termostato si trova vicino alla porta d'ingresso, regolatelo a vostro piacimento." },
+            { q: "L'acqua calda non esce, cosa faccio?", a: "Lo scaldabagno a gas si trova nel mobiletto in cucina accanto al lavello. In caso di blocco, premete il pulsante con la spia rossa per riattivarlo." },
+            { q: "Ci sono ventilatori?", a: "Sì, ogni camera è dotata di ventilatori regolabili con telecomando." },
+            { q: "Posso portare animali domestici?", a: "Sì, animali ben educati sono benvenuti." },
+            { q: "Quante persone possono soggiornare?", a: "L'appartamento può ospitare fino a 8 persone." },
+            { q: "Si può fumare in casa?", a: "È vietato fumare all'interno dell'appartamento." },
+            { q: "Ci sono coperte extra?", a: "Sì, nelle camere troverete coperte aggiuntive. Se le usate, lasciatele sul letto prima di partire." },
+          ],
+        },
+        {
+          title: "Check-out",
+          questions: [
+            { q: "A che ora devo lasciare l'appartamento?", a: "Il check-out è entro le ore 10:00." },
+            { q: "Dove lascio le chiavi?", a: "Nella cassetta della posta esterna denominata \"Casa nei Pini\", fuori dal portone d'ingresso." },
+            { q: "Cosa devo fare prima di partire?", a: "Vi chiediamo di: lavare le stoviglie o metterle in lavastoviglie, lasciare gli asciugamani usati nell'apposito contenitore, le coperte usate sul letto, riporre le chiavi in cassetta, e mandarci un messaggio di avvenuta partenza." },
+          ],
+        },
+        {
+          title: "Emergenze e contatti",
+          questions: [
+            { q: "Chi contatto in caso di problemi?", a: "Matteo: +39 348 113 8760 (anche WhatsApp) — Fabio: +39 347 427 6545. Email: mcerruti00@gmail.com" },
+            { q: "Come gestisco i rifiuti?", a: "Per soggiorni di 1-2 notti: usate il contenitore fuori dalla porta d'ingresso. Per soggiorni più lunghi: usate la chiavetta elettronica blu (data con le chiavi) per i bidoni più vicini. Trovate le mappe nella sezione Rifiuti." },
+          ],
+        },
+      ],
     },
   },
 };

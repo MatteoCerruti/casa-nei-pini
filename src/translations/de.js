@@ -48,6 +48,7 @@ const de = {
     parking: { title: "Parkplatz", desc: "Wo ihr das Auto abstellt" },
     contacts: { title: "Kontakte", desc: "Nützliche Nummern und Hilfe" },
     dintorni: { title: "Umgebung", desc: "Restaurants, Strände und Orte zum Entdecken" },
+    faq: { title: "FAQ", desc: "Häufig gestellte Fragen" },
   },
   pages: {
     checkin: {
@@ -160,6 +161,7 @@ const de = {
         pescoei: "Fischbistro in der Altstadt.",
         gattoNero: "Café-Bar mitten im Zentrum mit Tischen im Freien auf dem Platz. Tolles Frühstück, Croissants, Burger, Sandwiches, Aperitivo und Gin Tonic. Junges, freundliches Personal.",
         ebrezza: "Weinhandlung und Wine Bar auf einem kleinen Platz in der Altstadt. Frühstück mit Gebäck, Aperitivo mit Platten und Snacks, Cocktails. Große Außenterrasse.",
+        laBeffa: "Bar in der Altstadt, an der Piazza Fabrizio de André, nur wenige Schritte von der Piazza Dante entfernt.",
         daRettaAllaMola: "An der Uferpromenade, ideal für ein Frühstück mit Meerblick. Frisches Gebäck, Kaffee, Cocktails zum Aperitivo.",
         lungomareEuropa: "4,5 km lange Promenade zwischen Pinien und Oleandern. Freie Abschnitte, nachts beleuchtet. Fahrrad- und Skateverleih entlang der Strecke.",
         spiaggePonente: "Langer Sandstrand, ideal für Familien.",
@@ -179,6 +181,53 @@ const de = {
         savona: "Festung Priamar, Altstadt, Shopping, 15 Minuten mit dem Auto entfernt.",
         genova: "Porto Antico, eines der größten Aquarien Europas, UNESCO-Caruggi, die Lanterna. 35 Minuten mit dem Auto oder direktem Zug entfernt.",
       },
+    },
+    faq: {
+      title: "FAQ",
+      subtitle: "Antworten auf die häufigsten Fragen",
+      items: [],
+      groups: [
+        {
+          title: "Ankunft und Check-in",
+          questions: [
+            { q: "Um wie viel Uhr kann ich einchecken?", a: "Check-in ist ab 15:00 Uhr. Bei besonderen Bedürfnissen kontaktiert uns bitte im Voraus, wir tun unser Bestes, um euch entgegenzukommen." },
+            { q: "Wie bekomme ich die Schlüssel?", a: "Der Code für die Schlüsselbox (die die Schlüssel für die Haustür enthält) wird euch 24 Stunden vor der Ankunft per WhatsApp geschickt." },
+            { q: "Muss ich vor der Ankunft Dokumente senden?", a: "Ja, wir bitten um Fotos der Ausweisdokumente aller Gäste per WhatsApp oder über die Buchungsplattform, vor der Ankunft." },
+            { q: "Wo kann ich parken?", a: "Parkplatz Nummer 1 ist im Preis inbegriffen. In der Nähe gibt es außerdem eine rote Zone, in der frei geparkt werden kann. Genaue Hinweise findet ihr im Abschnitt Parkplatz." },
+            { q: "Gibt es eine Kurtaxe?", a: "Vom 1. April bis 31. Oktober fällt für die ersten 5 Übernachtungen eine Kurtaxe von 1,50€ pro Person und Nacht (ab 12 Jahren) an. Sie wird beim Check-in bezahlt. Für eventuelle Befreiungen verweisen wir auf die kommunale Verordnung." },
+          ],
+        },
+        {
+          title: "Während des Aufenthalts",
+          questions: [
+            { q: "Wie lautet das WLAN-Passwort?", a: "WLAN ist derzeit in der Wohnung nicht verfügbar. Wir aktualisieren diese Seite, sobald es aktiv ist." },
+            { q: "Gibt es eine Klimaanlage?", a: "Nein, die Wohnung ist nicht mit einer Klimaanlage ausgestattet." },
+            { q: "Kann ich Waschmaschine und Spülmaschine benutzen?", a: "Ja, beide befinden sich in der Küche links vom Kühlschrank und stehen frei zur Verfügung." },
+            { q: "Wie funktioniert die Heizung?", a: "Die Heizung ist unabhängig. Der Thermostat befindet sich in der Nähe der Haustür — stellt ihn nach Belieben ein." },
+            { q: "Es kommt kein warmes Wasser, was tun?", a: "Der Gas-Boiler befindet sich im Küchenschrank neben der Spüle. Falls er blockiert, drückt den Knopf mit dem roten Licht, um ihn zurückzusetzen." },
+            { q: "Gibt es Ventilatoren?", a: "Ja, jedes Schlafzimmer verfügt über regelbare Ventilatoren mit Fernbedienung." },
+            { q: "Darf ich Haustiere mitbringen?", a: "Ja, gut erzogene Haustiere sind willkommen." },
+            { q: "Wie viele Personen können übernachten?", a: "Die Wohnung bietet Platz für bis zu 8 Personen." },
+            { q: "Darf man drinnen rauchen?", a: "Rauchen in der Wohnung ist nicht erlaubt." },
+            { q: "Gibt es zusätzliche Decken?", a: "Ja, in den Schlafzimmern findet ihr zusätzliche Decken. Wenn ihr sie benutzt, lasst sie vor der Abreise auf dem Bett." },
+          ],
+        },
+        {
+          title: "Check-out",
+          questions: [
+            { q: "Um wie viel Uhr muss ich die Wohnung verlassen?", a: "Check-out ist bis 10:00 Uhr." },
+            { q: "Wo lasse ich die Schlüssel?", a: "Im Außenbriefkasten mit der Aufschrift \"Casa nei Pini\", außerhalb der Eingangstür." },
+            { q: "Was muss ich vor der Abreise tun?", a: "Bitte: spült das Geschirr oder stellt es in die Spülmaschine, legt benutzte Handtücher in den dafür vorgesehenen Behälter, benutzte Decken auf das Bett, legt die Schlüssel in den Briefkasten und schickt uns eine Nachricht, sobald ihr abgereist seid." },
+          ],
+        },
+        {
+          title: "Notfälle und Kontakte",
+          questions: [
+            { q: "Wen kontaktiere ich bei Problemen?", a: "Matteo: +39 348 113 8760 (auch WhatsApp) — Fabio: +39 347 427 6545. E-Mail: mcerruti00@gmail.com" },
+            { q: "Wie entsorge ich den Müll?", a: "Bei Aufenthalten von 1-2 Nächten: nutzt den Behälter vor der Haustür. Bei längeren Aufenthalten: nutzt den blauen elektronischen Schlüssel (zusammen mit den Schlüsseln übergeben) für die nächstgelegenen Container. Die Karten findet ihr im Abschnitt Müll." },
+          ],
+        },
+      ],
     },
   },
 };
