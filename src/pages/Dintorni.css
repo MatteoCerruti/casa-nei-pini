@@ -1,0 +1,54 @@
+.dintorni-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.dintorni-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.dintorni-chip:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.dintorni-category {
+  /* Compensa l'header sticky (site-bar) che altrimenti copre il titolo
+     della categoria quando si naviga tramite i chip in cima alla pagina. */
+  scroll-margin-top: 96px;
+}
+
+@media (max-width: 480px) {
+  .dintorni-category {
+    scroll-margin-top: 80px;
+  }
+}
+
+.dintorni-category-title {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.dintorni-place-list {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .section-page-dintorni .card-group-title {
+    justify-content: flex-start;
+  }
+}

@@ -14,6 +14,7 @@ const SECTION_KEYS = [
   "trash",
   "parking",
   "contacts",
+  "dintorni",
 ];
 
 function Home() {
