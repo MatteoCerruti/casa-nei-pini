@@ -5,6 +5,7 @@ import sectionIcons from "../sectionIcons";
 import "./Home.css";
 
 const SECTION_KEYS = [
+  "availability",
   "checkin",
   "checkout",
   "wifi",

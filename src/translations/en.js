@@ -49,6 +49,7 @@ const en = {
     contacts: { title: "Contacts", desc: "Useful numbers and assistance" },
     dintorni: { title: "Nearby", desc: "Restaurants, beaches and places to discover" },
     faq: { title: "FAQ", desc: "Frequently asked questions" },
+    availability: { title: "Availability", desc: "Calendar of open dates" },
   },
   pages: {
     checkin: {
@@ -228,6 +229,15 @@ const en = {
           ],
         },
       ],
+    },
+    availability: {
+      title: "Availability",
+      subtitle: "Open dates for the coming months",
+      legendAvailable: "Available",
+      legendBooked: "Booked",
+      loading: "Loading calendar…",
+      error: "Unable to load availability right now. Please try again later.",
+      items: [],
     },
   },
 };

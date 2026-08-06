@@ -49,6 +49,7 @@ const de = {
     contacts: { title: "Kontakte", desc: "Nützliche Nummern und Hilfe" },
     dintorni: { title: "Umgebung", desc: "Restaurants, Strände und Orte zum Entdecken" },
     faq: { title: "FAQ", desc: "Häufig gestellte Fragen" },
+    availability: { title: "Verfügbarkeit", desc: "Kalender der freien Termine" },
   },
   pages: {
     checkin: {
@@ -228,6 +229,15 @@ const de = {
           ],
         },
       ],
+    },
+    availability: {
+      title: "Verfügbarkeit",
+      subtitle: "Freie Termine der nächsten Monate",
+      legendAvailable: "Frei",
+      legendBooked: "Belegt",
+      loading: "Kalender wird geladen…",
+      error: "Die Verfügbarkeit kann momentan nicht geladen werden. Bitte versuchen Sie es später erneut.",
+      items: [],
     },
   },
 };

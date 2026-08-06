@@ -49,6 +49,7 @@ const es = {
     contacts: { title: "Contactos", desc: "Números útiles y asistencia" },
     dintorni: { title: "Alrededores", desc: "Restaurantes, playas y lugares por descubrir" },
     faq: { title: "FAQ", desc: "Preguntas frecuentes" },
+    availability: { title: "Disponibilidad", desc: "Calendario de fechas libres" },
   },
   pages: {
     checkin: {
@@ -228,6 +229,15 @@ const es = {
           ],
         },
       ],
+    },
+    availability: {
+      title: "Disponibilidad",
+      subtitle: "Las fechas libres de los próximos meses",
+      legendAvailable: "Libre",
+      legendBooked: "Ocupado",
+      loading: "Cargando el calendario…",
+      error: "No se puede cargar la disponibilidad en este momento. Inténtalo más tarde.",
+      items: [],
     },
   },
 };
