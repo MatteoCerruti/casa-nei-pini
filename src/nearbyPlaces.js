@@ -226,11 +226,6 @@ const nearbyPlaces = [
         mapsUrl: "https://maps.google.com/?q=Santuario+Nostra+Signora+Guardia+Varazze",
       },
       {
-        id: "villaraba",
-        name: "Villaraba",
-        mapsUrl: "https://maps.google.com/?q=Villaraba+Varazze",
-      },
-      {
         id: "parcoBeigua",
         name: "Parco Naturale del Beigua",
         lat: 44.47904,
