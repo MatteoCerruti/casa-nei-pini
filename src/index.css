@@ -11,8 +11,8 @@
   --color-border: #DDDDDD;
   --color-text: #222222;
   --color-muted: #717171;
-  --color-accent: #FF385C;
-  --color-accent-dark: #D90B63;
+  --color-accent: #DE3163;       /* Il tuo Magenta/Rosso richiesto (#DE3163) */
+  --color-accent-dark: #B8264F;  /* Versione più scura per hover/sfumature */
   /* Testo/icone sopra un bottone o pin colorato con --color-accent: quasi
      sempre bianco puro in entrambi i temi, per contrasto. */
   --color-on-accent: #FFFFFF;
@@ -32,8 +32,8 @@
     --color-border: #38393D;
     --color-text: #F2F2F2;
     --color-muted: #A3A3A8;
-    --color-accent: #FF5A79;
-    --color-accent-dark: #FF385C;
+    --color-accent: #DE3163;       /* Magenta leggermente più vivido per il tema scuro */
+    --color-accent-dark: #B8264F;
   }
 }
 
@@ -45,8 +45,8 @@
   --color-border: #38393D;
   --color-text: #F2F2F2;
   --color-muted: #A3A3A8;
-  --color-accent: #FF5A79;
-  --color-accent-dark: #FF385C;
+  --color-accent: #DE3163;
+  --color-accent-dark: #B8264F;
 }
 
 body {

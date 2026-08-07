@@ -11,7 +11,10 @@ function Layout() {
     <>
       <header className="site-bar">
         <div className="site-bar-inner">
-          <Link to="/" className="site-bar-name">{t.header.title}</Link>
+          <Link to="/" className="site-bar-name">
+            <img src="/logo.png" alt="" className="site-bar-logo" />
+            {t.header.title}
+          </Link>
           <div className="site-bar-actions">
             <LanguageSelector />
             <ThemeToggle />
