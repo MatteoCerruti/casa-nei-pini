@@ -7,14 +7,15 @@ import PlatformCard from "./PlatformCard";
 import PhotoGrid from "./PhotoGrid";
 import MapEmbed, { MAPS_LINK } from "./MapEmbed";
 import EmergencyCard from "./EmergencyCard";
-import contactAvatars from "../contactAvatars";
 import platformMeta from "../platformMeta";
+import { config } from "../properties";
 import "./SectionShell.css";
 
-const FULL_ADDRESS = "Via Nuova Cantalupo 29/1, 17019 Varazze (SV)";
+const FULL_ADDRESS = config.location.address;
 
 // Raggruppa gli item in blocchi: i testi restano singoli (etichetta + corpo),
-// una coppia tel+wa con foto profilo diventa una card contatto, un link con id
+// una coppia tel+wa con lo stesso id diventa una card contatto (la foto è
+// opzionale: ContactCard mostra un placeholder se manca), un link con id
 // piattaforma (airbnb/booking) diventa una card piattaforma, gli altri
 // link/telefono/whatsapp/email consecutivi finiscono in una riga.
 function groupItems(items) {
@@ -29,7 +30,7 @@ function groupItems(items) {
       continue;
     }
 
-    if (item.type === "tel" && contactAvatars[item.id]) {
+    if (item.type === "tel" && item.id) {
       const next = items[i + 1];
       const wa = next && next.type === "wa" && next.id === item.id ? next : null;
       const contact = {

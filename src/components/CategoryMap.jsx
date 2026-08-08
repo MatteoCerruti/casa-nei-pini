@@ -4,10 +4,11 @@ import { ExternalLink } from "lucide-react";
 import L from "leaflet";
 import { useLanguage } from "../LanguageContext";
 import { useTheme } from "../ThemeContext";
+import { config } from "../properties";
 import "leaflet/dist/leaflet.css";
 import "./CategoryMap.css";
 
-const HOUSE_POSITION = [44.3623255, 8.5665055]; // Via Nuova Cantalupo 29/1, Varazze
+const HOUSE_POSITION = config.location.position;
 
 function FitAllPoints({ positions }) {
   const map = useMap();

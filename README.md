@@ -2,6 +2,68 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Multi-tenant: più appartamenti sulla stessa codebase
+
+Il codice (pagine, componenti, layout) è condiviso tra tutti gli appartamenti.
+Tutto ciò che cambia da un appartamento all'altro vive sotto `src/properties/<id>/`:
+
+- `translations/{it,en,fr,es,de}.js` — tutti i testi mostrati nell'app.
+- `config.js` — dati non testuali (posizione GPS, link Google Maps, ecc.).
+- `nearbyPlaces.js` — ristoranti/spiagge/negozi nei dintorni.
+
+`src/properties/index.js` sceglie l'appartamento attivo leggendo la env var
+`REACT_APP_PROPERTY_ID` (default `casa-nei-pini`) e la usa in build/dev.
+
+### Aggiungere un nuovo appartamento
+
+1. Duplica una cartella esistente, es. `src/properties/vista-dai-pini/` → `src/properties/nuovo-id/`.
+2. Aggiorna testi, `config.js` e `nearbyPlaces.js`.
+3. Registra la nuova proprietà in `src/properties/index.js`.
+4. Su Vercel, crea un nuovo progetto collegato alla stessa repo (stesso branch),
+   con env var proprie:
+   - `REACT_APP_PROPERTY_ID=nuovo-id`
+   - `BOOKING_ICAL_URL`, `AIRBNB_ICAL_URL` (usate da `api/availability.js`)
+
+### Foto
+
+Le foto vivono in `src/properties/<id>/assets/photos/<sezione>/[<slot>/]`,
+nominate `<slot>-1.ext`, `<slot>-2.ext`, ... Vengono caricate in automatico da
+`src/properties/photoLoader.js` tramite `getPhotos(sezione, slot)`: basta
+mettere i file nella cartella giusta, senza toccare il codice delle pagine.
+
+Esempi:
+- `apartment/salotto/salotto-1.jpeg` → `getPhotos("apartment", "salotto")`
+- `checkin/porta/porta-1.png` → `getPhotos("checkin", "porta")`
+
+Per un nuovo appartamento senza foto ancora pronte, basta creare le cartelle
+vuote (anche solo con `.gitkeep`) sotto `src/properties/<id>/assets/photos/`:
+la build non si rompe, semplicemente non mostra foto finché non le aggiungi.
+
+### Host e avatar
+
+Gli host (nome, telefono, link WhatsApp) sono già testo nelle `translations/*`,
+quindi già liberi di cambiare per proprietà, incluso l'`id` usato per associare
+la foto profilo. Le foto stesse vivono in `src/properties/<id>/assets/avatars/`,
+nominate `<id>.ext` (es. `matteo.jpg` per `{ type: "tel", id: "matteo", ... }`),
+caricate da `src/contactAvatars.js`.
+
+### Logo
+
+`src/properties/<id>/assets/branding/logo.png` è il logo mostrato in header,
+caricato da `src/properties/branding.js`. Basta sostituire il file per
+proprietà.
+
+### Limite noto: favicon e icone PWA
+
+`public/favicon.ico`, `public/logo192.png`, `public/logo512.png` e
+`public/manifest.json` sono ancora condivisi tra tutte le proprietà: CRA li
+serve staticamente dalla cartella `public/`, che non passa dal meccanismo
+`REACT_APP_PROPERTY_ID` usato per il resto. Se serve differenziarli per
+appartamento, si può fare con l'interpolazione `%REACT_APP_PROPERTY_ID%` in
+`public/index.html`/`manifest.json` puntando a `public/branding/<id>/...`,
+ma non l'ho implementato: è cosmetico (tab del browser / icona PWA) e a basso
+impatto rispetto al resto.
+
 ## Available Scripts
 
 In the project directory, you can run:

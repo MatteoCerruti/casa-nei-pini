@@ -3,11 +3,12 @@ import { useLanguage } from "../LanguageContext";
 import SectionShell from "../components/SectionShell";
 import InlinePhoto from "../components/InlinePhoto";
 import MapEmbed from "../components/MapEmbed";
-import portaIngresso from "../assets/photos/checkin/porta-ingresso.png";
-import cassettaSicurezza from "../assets/photos/checkin/cassetta-sicurezza.png";
+import { getPhotos } from "../properties/photoLoader";
 
 function CheckIn() {
   const { t } = useLanguage();
+  const [portaIngresso] = getPhotos("checkin", "porta");
+  const [cassettaSicurezza] = getPhotos("checkin", "cassetta");
 
   return (
     <SectionShell icon={KeyRound} sectionKey="checkin">

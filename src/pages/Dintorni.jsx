@@ -3,7 +3,7 @@ import { useLanguage } from "../LanguageContext";
 import SectionShell from "../components/SectionShell";
 import PlaceCard from "../components/PlaceCard";
 import CategoryMap from "../components/CategoryMap";
-import nearbyPlaces from "../nearbyPlaces";
+import { nearbyPlaces } from "../properties";
 import "./Dintorni.css";
 
 const CATEGORY_ICONS = {

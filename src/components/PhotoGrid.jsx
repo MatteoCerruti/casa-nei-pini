@@ -7,15 +7,12 @@ import "./PhotoGrid.css";
 /*
  * COME AGGIUNGERE LE FOTO REALI
  * ------------------------------
- * 1. Copia il file immagine dentro src/assets/photos/<nome-sezione>/
- *    (es. src/assets/photos/checkin/foto1.jpg)
- * 2. In cima al file della pagina che usa questo componente (es. src/pages/CheckIn.jsx)
- *    aggiungi l'import dell'immagine:
- *      import foto1 from "../assets/photos/checkin/foto1.jpg";
- * 3. Passa le immagini importate alla prop `photos` di <PhotoGrid />:
- *      <PhotoGrid sectionKey="checkin" photos={[foto1]} />
- *    Ogni immagine nell'array sostituisce automaticamente un placeholder
- *    con la foto reale. Gli slot restanti restano vuoti finché non aggiungi altre foto.
+ * Copia il file immagine dentro src/properties/<id>/assets/photos/<sezione>/[<slot>/]
+ * con un nome tipo <slot>-1.jpg, <slot>-2.jpg, ... (vedi properties/photoLoader.js).
+ * Le pagine leggono le foto con getPhotos("<sezione>", "<slot>") e le passano
+ * alla prop `photos` di <PhotoGrid />: comparirà in automatico, in ordine,
+ * senza altre modifiche al codice. Gli slot restanti restano vuoti finché
+ * non aggiungi altre foto.
  */
 function PhotoGrid({ sectionKey, photos = [], count = 4, title }) {
   const { t } = useLanguage();

@@ -2,12 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import { CalendarDays, ChevronLeft, ChevronRight, Mail, MessageCircle, X } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 import SectionShell from "../components/SectionShell";
+import { config } from "../properties";
 import "./Availability.css";
 
 const MONTHS_AHEAD = 6;
-const HOST_EMAIL = "mcerruti00@gmail.com";
-const HOST_WHATSAPP = "393481138760";
-const APARTMENT_NAME = "Casa nei Pini";
+const HOST_EMAIL = config.quoteContact.email;
+const HOST_WHATSAPP = config.quoteContact.whatsapp;
 
 // Dati finti usati solo in sviluppo locale, dove /api/availability non è servito da react-scripts.
 function mockBlocked() {
@@ -163,11 +163,11 @@ function Availability() {
           end: dateFormatter.format(selection.end),
         });
     const detailsPart = fillTemplate(p.quoteBodyDetails, {
-      apartment: APARTMENT_NAME,
+      apartment: t.header.title,
       guests: String(guests),
     });
     return `${datesPart} ${detailsPart}`;
-  }, [selection, dateFormatter, guests, p]);
+  }, [selection, dateFormatter, guests, p, t]);
 
   const mailtoHref = useMemo(() => {
     const subject = encodeURIComponent(p.quoteSubject);

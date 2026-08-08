@@ -3,12 +3,13 @@ import { useLanguage } from "../LanguageContext";
 import SectionShell from "../components/SectionShell";
 import InfoBlock from "../components/InfoBlock";
 import InlinePhoto from "../components/InlinePhoto";
-import svolta1 from "../assets/photos/parking/svolta-1.png";
-import parcheggio1 from "../assets/photos/parking/parcheggio-1.jpg";
+import { getPhotos } from "../properties/photoLoader";
 
 function Parking() {
   const { t } = useLanguage();
   const p = t.pages.parking;
+  const [svolta1] = getPhotos("parking", "svolta");
+  const [parcheggio1] = getPhotos("parking", "parcheggio");
 
   return (
     <SectionShell

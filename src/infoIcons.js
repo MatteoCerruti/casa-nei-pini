@@ -25,6 +25,7 @@ import {
   Car,
   Navigation,
   ParkingCircle,
+  Footprints,
 } from "lucide-react";
 
 // Registro icone usate nelle voci di contenuto delle pagine interne (InfoBlock).
@@ -55,6 +56,7 @@ const infoIcons = {
   Car,
   Navigation,
   ParkingCircle,
+  Footprints,
 };
 
 export default infoIcons;

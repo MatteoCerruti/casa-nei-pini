@@ -4,11 +4,12 @@ import { ExternalLink } from "lucide-react";
 import L from "leaflet";
 import { useLanguage } from "../LanguageContext";
 import { useTheme } from "../ThemeContext";
+import { config } from "../properties";
 import "leaflet/dist/leaflet.css";
 import "./MapEmbed.css";
 
-const POSITION = [44.3623255, 8.5665055]; // Via Nuova Cantalupo 29/1, Varazze
-export const MAPS_LINK = "https://maps.app.goo.gl/BPrxUKG2ZyoEczc46";
+const POSITION = config.location.position;
+export const MAPS_LINK = config.location.mapsLink;
 
 // Decentra la vista: sposta la camera in basso a destra rispetto al pin,
 // così il marker resta nella parte alta/sinistra del riquadro.
