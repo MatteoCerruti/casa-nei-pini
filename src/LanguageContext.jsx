@@ -14,6 +14,7 @@ export function LanguageProvider({ children }) {
 
   useEffect(() => {
     localStorage.setItem("lang", lang);
+    document.documentElement.lang = lang;
   }, [lang]);
 
   const t = translations[lang];
