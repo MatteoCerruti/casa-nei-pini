@@ -55,9 +55,9 @@ const es = {
       subtitle: "Todo lo que necesitáis para vuestra llegada",
       items: [
         { type: "text", icon: "Clock", label: "Horario", text: "El check-in está disponible a partir de las 15:00." },
-        { type: "text", icon: "FileText", label: "Documentos", important: true, text: "Os pedimos que nos enviéis una foto de vuestros documentos de identidad por <a href=\"https://wa.me/qr/XGBM2ZI25OHRD1\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a> o a través de la plataforma antes de la llegada, especificando la fecha de llegada y el número de huéspedes." },
+        { type: "text", icon: "FileText", label: "Documentos", important: true, text: "Antes de la llegada, os pedimos que completéis el check-in online a través del enlace que encontraréis en el mensaje de confirmación de la reserva, indicando los datos de todos los huéspedes. Además, os pedimos que nos enviéis una foto de un documento de identidad, a través de Airbnb o por <a href=\"https://wa.me/qr/XGBM2ZI25OHRD1\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a>." },
         { type: "text", icon: "Receipt", label: "Tasa turística", important: true, text: "A pagar en el alojamiento, además de lo ya abonado a través de la plataforma: 1,50€ por persona y noche (a partir de 12 años) para las primeras 5 noches, vigente del 1 de abril al 31 de octubre." },
-        { type: "text", icon: "Lock", label: "Caja de seguridad", important: true, text: "El código de la caja de seguridad se enviará 24 horas antes del check-in, <strong>siempre que</strong> ya nos hayáis enviado las fotos de los documentos de todos los huéspedes: dentro encontraréis las llaves de la puerta principal." },
+        { type: "text", icon: "Lock", label: "Caja de seguridad", important: true, text: "El código de la caja de seguridad se enviará 24 horas antes del check-in, <strong>siempre que</strong> hayáis completado el check-in online y ya nos hayáis enviado las fotos de los documentos de identidad: dentro encontraréis las llaves de la puerta principal." },
       ],
     },
     checkout: {

@@ -60,9 +60,9 @@ const de = {
       items: [
         { type: "text", icon: "Clock", label: "Uhrzeit", text: "Check-in ist ab 15:00 Uhr möglich." },
         { type: "text", icon: "Footprints", label: "Treppe", text: "Die Wohnung befindet sich im Obergeschoss: vom Eingang aus müsst ihr eine Treppe hinaufgehen." },
-        { type: "text", icon: "FileText", label: "Dokumente", important: true, text: "Bitte schickt uns vor der Ankunft ein Foto eurer Ausweisdokumente per <a href=\"https://wa.me/qr/XGBM2ZI25OHRD1\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a> oder über die Plattform, mit Angabe von Ankunftsdatum und Anzahl der Gäste." },
+        { type: "text", icon: "FileText", label: "Dokumente", important: true, text: "Bitte füllt vor der Ankunft das Online-Check-in über den Link in der Buchungsbestätigung aus und gebt die Daten aller Gäste ein. Zusätzlich bitten wir euch, uns ein Foto eines Ausweisdokuments zu schicken, über Airbnb oder per <a href=\"https://wa.me/qr/XGBM2ZI25OHRD1\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a>." },
         { type: "text", icon: "Receipt", label: "Kurtaxe", important: true, text: "Vor Ort zu zahlen, zusätzlich zu dem bereits über die Plattform bezahlten Betrag: 1,50€ pro Person und Nacht (ab 12 Jahren) für die ersten 5 Übernachtungen, gültig vom 1. April bis 31. Oktober." },
-        { type: "text", icon: "Lock", label: "Schlüsselbox", important: true, text: "Der Code der Schlüsselbox wird euch 24 Stunden vor dem Check-in geschickt, <strong>sofern</strong> ihr uns bereits die Ausweisfotos aller Gäste geschickt habt: darin findet ihr die Schlüssel für die Haustür." },
+        { type: "text", icon: "Lock", label: "Schlüsselbox", important: true, text: "Der Code der Schlüsselbox wird euch 24 Stunden vor dem Check-in geschickt, <strong>sofern</strong> ihr das Online-Check-in abgeschlossen und uns bereits die Ausweisfotos geschickt habt: darin findet ihr die Schlüssel für die Haustür." },
       ],
     },
     checkout: {

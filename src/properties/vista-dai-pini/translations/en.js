@@ -60,9 +60,9 @@ const en = {
       items: [
         { type: "text", icon: "Clock", label: "Time", text: "Check-in is available from 3:00 PM." },
         { type: "text", icon: "Footprints", label: "Stairs", text: "The apartment is on the upper floor: from the entrance you'll need to climb one flight of stairs." },
-        { type: "text", icon: "FileText", label: "Documents", important: true, text: "Please send us a photo of your ID via <a href=\"https://wa.me/qr/XGBM2ZI25OHRD1\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a> or through the platform before arrival, specifying your arrival date and number of guests." },
+        { type: "text", icon: "FileText", label: "Documents", important: true, text: "Before arrival, please complete the online check-in using the link in your booking confirmation message, entering the details for all guests. Please also send us a photo of an ID document, either through Airbnb or via <a href=\"https://wa.me/qr/XGBM2ZI25OHRD1\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a>." },
         { type: "text", icon: "Receipt", label: "Tourist tax", important: true, text: "To be paid on site, in addition to what you've already paid through the platform: €1.50 per person per night (age 12+) for the first 5 nights, applicable from April 1st to October 31st." },
-        { type: "text", icon: "Lock", label: "Lockbox", important: true, text: "The lockbox code will be sent to you 24 hours before check-in, <strong>provided</strong> you've already sent us the ID photos of all guests: inside you'll find the keys to the front door." },
+        { type: "text", icon: "Lock", label: "Lockbox", important: true, text: "The lockbox code will be sent to you 24 hours before check-in, <strong>provided</strong> you've completed the online check-in and already sent us the ID photos: inside you'll find the keys to the front door." },
       ],
     },
     checkout: {

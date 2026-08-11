@@ -55,9 +55,9 @@ const fr = {
       subtitle: "Tout ce qu'il faut pour votre arrivée",
       items: [
         { type: "text", icon: "Clock", label: "Horaire", text: "L'arrivée est possible à partir de 15h00." },
-        { type: "text", icon: "FileText", label: "Documents", important: true, text: "Merci de nous envoyer une photo de vos pièces d'identité via <a href=\"https://wa.me/qr/XGBM2ZI25OHRD1\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a> ou via la plateforme avant votre arrivée, en précisant la date d'arrivée et le nombre d'hôtes." },
+        { type: "text", icon: "FileText", label: "Documents", important: true, text: "Avant votre arrivée, merci de compléter le check-in en ligne via le lien indiqué dans le message de confirmation de réservation, en renseignant les informations de tous les hôtes. Merci également de nous envoyer une photo d'une pièce d'identité, via Airbnb ou sur <a href=\"https://wa.me/qr/XGBM2ZI25OHRD1\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a>." },
         { type: "text", icon: "Receipt", label: "Taxe de séjour", important: true, text: "À payer sur place, en plus de ce qui a déjà été payé via la plateforme : 1,50€ par personne et par nuit (à partir de 12 ans) pour les 5 premières nuits, applicable du 1er avril au 31 octobre." },
-        { type: "text", icon: "Lock", label: "Boîte à clés", important: true, text: "Le code de la boîte à clés vous sera envoyé 24 heures avant l'arrivée, <strong>à condition</strong> que vous nous ayez déjà envoyé les photos des pièces d'identité de tous les hôtes : à l'intérieur vous trouverez les clés de la porte d'entrée." },
+        { type: "text", icon: "Lock", label: "Boîte à clés", important: true, text: "Le code de la boîte à clés vous sera envoyé 24 heures avant l'arrivée, <strong>à condition</strong> que vous ayez complété le check-in en ligne et que vous nous ayez déjà envoyé les photos des pièces d'identité : à l'intérieur vous trouverez les clés de la porte d'entrée." },
       ],
     },
     checkout: {

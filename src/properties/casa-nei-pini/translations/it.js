@@ -54,10 +54,10 @@ const it = {
       title: "Check-in",
       subtitle: "Tutto ciò che serve per il vostro arrivo",
       items: [
-        { type: "text", icon: "FileText", label: "Documenti", important: true, text: "Vi chiediamo di inviarci una foto dei documenti d'identità via <a href=\"https://wa.me/qr/XGBM2ZI25OHRD1\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a> o tramite la piattaforma prima dell'arrivo, specificando la data di arrivo e il numero di ospiti." },
+        { type: "text", icon: "FileText", label: "Documenti", important: true, text: "Prima dell'arrivo vi chiediamo di completare il check-in online tramite il link che trovate nel messaggio di conferma della prenotazione, inserendo i dati di tutti gli ospiti. Vi chiediamo inoltre di inviarci una foto di un documento d'identità, tramite Airbnb oppure su <a href=\"https://wa.me/qr/XGBM2ZI25OHRD1\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a>." },
         { type: "text", icon: "Clock", label: "Orario", text: "Il check-in è disponibile dalle ore 15:00." },
         { type: "text", icon: "Receipt", label: "Imposta di soggiorno", important: true, text: "Da pagare in loco, in aggiunta a quanto già versato tramite piattaforma: 1,50€ a persona a notte (dai 12 anni in su) per i primi 5 pernottamenti, valida nel periodo dal 1° aprile al 31 ottobre." },
-        { type: "text", icon: "Lock", label: "Cassetta di sicurezza", important: true, text: "Il codice della cassetta di sicurezza vi verrà inviato 24 ore prima del check-in, <strong>a condizione</strong> che ci abbiate già inviato le foto dei documenti di tutti gli ospiti: al suo interno troverete le chiavi della porta d'ingresso." },
+        { type: "text", icon: "Lock", label: "Cassetta di sicurezza", important: true, text: "Il codice della cassetta di sicurezza vi verrà inviato 24 ore prima del check-in, <strong>a condizione</strong> che abbiate completato il check-in online e ci abbiate già inviato le foto dei documenti d'identità: al suo interno troverete le chiavi della porta d'ingresso." },
       ],
     },
     checkout: {
