@@ -97,7 +97,7 @@ function maskDigits(digits) {
   return `${d}/${m}/${y}`;
 }
 
-function DateField({ value, onChange, lang = "en", required, ...rest }) {
+function DateField({ value, onChange, lang = "en", ...rest }) {
   const [open, setOpen] = useState(false);
   const [view, setView] = useState("days"); // days | months | years
   const wrapperRef = useRef(null);
@@ -165,7 +165,6 @@ function DateField({ value, onChange, lang = "en", required, ...rest }) {
           <CalendarDays size={16} strokeWidth={1.75} />
         </button>
       </div>
-      {required && <input tabIndex={-1} className="date-field-hidden-required" required value={value || ""} onChange={() => {}} />}
       {open && (
         <div className="date-field-popover">
           {view === "days" && (

@@ -10,6 +10,7 @@ import "./GuestCheckin.css";
 
 const COPY = {
   it: {
+    errorRequiredFields: "Compila tutti i campi obbligatori.",
     errorArrivalPast: "La data di arrivo non può essere nel passato.",
     errorDepartureBeforeArrival: "La data di partenza deve essere successiva a quella di arrivo.",
     errorBirthDateFuture: "La data di nascita non può essere nel futuro.",
@@ -64,6 +65,7 @@ const COPY = {
     ],
   },
   en: {
+    errorRequiredFields: "Please fill in all required fields.",
     errorArrivalPast: "The arrival date cannot be in the past.",
     errorDepartureBeforeArrival: "The departure date must be after the arrival date.",
     errorBirthDateFuture: "The date of birth cannot be in the future.",
@@ -118,6 +120,7 @@ const COPY = {
     ],
   },
   fr: {
+    errorRequiredFields: "Veuillez remplir tous les champs obligatoires.",
     errorArrivalPast: "La date d'arrivée ne peut pas être dans le passé.",
     errorDepartureBeforeArrival: "La date de départ doit être postérieure à la date d'arrivée.",
     errorBirthDateFuture: "La date de naissance ne peut pas être dans le futur.",
@@ -172,6 +175,7 @@ const COPY = {
     ],
   },
   es: {
+    errorRequiredFields: "Completa todos los campos obligatorios.",
     errorArrivalPast: "La fecha de llegada no puede ser en el pasado.",
     errorDepartureBeforeArrival: "La fecha de salida debe ser posterior a la de llegada.",
     errorBirthDateFuture: "La fecha de nacimiento no puede ser en el futuro.",
@@ -226,6 +230,7 @@ const COPY = {
     ],
   },
   de: {
+    errorRequiredFields: "Bitte fülle alle Pflichtfelder aus.",
     errorArrivalPast: "Das Ankunftsdatum darf nicht in der Vergangenheit liegen.",
     errorDepartureBeforeArrival: "Das Abreisedatum muss nach dem Ankunftsdatum liegen.",
     errorBirthDateFuture: "Das Geburtsdatum darf nicht in der Zukunft liegen.",
@@ -330,6 +335,11 @@ function GuestCheckin() {
   function handleCodeSubmit(e) {
     e.preventDefault();
 
+    if (!codeInput.trim() || !codeArrival || !codeDeparture) {
+      setToastMessage(c.errorRequiredFields);
+      return;
+    }
+
     const todayIso = dateOnlyIso(new Date());
     if (codeArrival < todayIso) {
       setToastMessage(c.errorArrivalPast);
@@ -345,6 +355,7 @@ function GuestCheckin() {
       arrival: codeArrival,
       departure: codeDeparture,
     });
+    setInitialLoading(true);
     navigate(`/checkin-online?${params.toString()}`, { replace: true });
   }
 
@@ -441,7 +452,7 @@ function GuestCheckin() {
       .catch(() => setBookingConfirmed(false))
       .finally(() => setInitialLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bookingRef]);
+  }, [bookingRef, urlArrival, urlDeparture]);
 
   // Se al caricamento la prenotazione ha già raggiunto la capienza
   // massima, non mostriamo la card ospite vuota di default.
@@ -489,6 +500,12 @@ function GuestCheckin() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
+
+    const hasMissingBirthDate = guests.some((g) => !g.birthDate);
+    if (hasMissingBirthDate) {
+      setToastMessage(c.errorRequiredFields);
+      return;
+    }
 
     const todayIso = dateOnlyIso(new Date());
     const hasFutureBirthDate = guests.some((g) => g.birthDate && g.birthDate > todayIso);
@@ -581,11 +598,11 @@ function GuestCheckin() {
           <div className="guestcheckin-row">
             <label>
               {c.arrival}
-              <DateField required lang={lang} value={codeArrival} onChange={setCodeArrival} />
+              <DateField lang={lang} value={codeArrival} onChange={setCodeArrival} />
             </label>
             <label>
               {c.departure}
-              <DateField required lang={lang} value={codeDeparture} onChange={setCodeDeparture} />
+              <DateField lang={lang} value={codeDeparture} onChange={setCodeDeparture} />
             </label>
           </div>
           <button type="submit" className="guestcheckin-submit">
@@ -681,7 +698,7 @@ function GuestCheckin() {
             <div className="guestcheckin-row">
               <label>
                 {c.birthDate}
-                <DateField required lang={lang} value={guest.birthDate} onChange={(v) => updateGuest(i, "birthDate", v)} />
+                <DateField lang={lang} value={guest.birthDate} onChange={(v) => updateGuest(i, "birthDate", v)} />
               </label>
               <label>
                 {c.birthPlace}

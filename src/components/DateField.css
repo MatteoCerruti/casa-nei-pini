@@ -52,13 +52,6 @@
   flex-shrink: 0;
 }
 
-.date-field-hidden-required {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  height: 1px;
-  width: 1px;
-}
 
 .date-field-popover {
   position: absolute;
