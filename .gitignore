@@ -25,3 +25,8 @@ Thumbs.db
 .idea/
 .vercel
 .env*
+
+# Claude Code (config/tool locali, non parte dell'app)
+.claude/
+.agents/
+skills-lock.json
