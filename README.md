@@ -17,6 +17,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
       dai messaggi automatici di Airbnb/Booking agli ospiti — a mano, lato
       host, nei rispettivi pannelli (non automatizzabile da qui).
 
+## Nota: ambiente dev = ambiente prod (per ora, scelta consapevole)
+
+Per ogni proprietà, **il database Neon e l'istanza Clerk sono gli stessi**
+tra locale, preview e produzione — non c'è separazione dev/prod. Vantaggio:
+setup più semplice, login identico ovunque. Rischio: un test fatto in
+locale scrive/modifica dati che vedono davvero gli ospiti. Va bene per le
+dimensioni attuali del progetto, ma occhio quando si testano flussi
+distruttivi (delete, riapertura, ecc.) — pulire sempre i dati di prova dal
+DB reale dopo un test. Se il progetto cresce, separare gli ambienti (nuovo
+DB Neon + Clerk in vera modalità production) è la prossima cosa sensata
+da fare.
+
 ## Multi-tenant: più appartamenti sulla stessa codebase
 
 Il codice (pagine, componenti, layout) è condiviso tra tutti gli appartamenti.

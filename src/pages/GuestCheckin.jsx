@@ -4,6 +4,7 @@ import { UserPlus, Trash2, CheckCircle2, Share2, Check, Loader2 } from "lucide-r
 import { useLanguage } from "../LanguageContext";
 import DateField from "../components/DateField";
 import ConfirmDialog from "../components/ConfirmDialog";
+import Toast from "../components/Toast";
 import { config } from "../properties";
 import "./GuestCheckin.css";
 
@@ -287,6 +288,16 @@ function dateOnlyIso(date) {
   return `${y}-${m}-${d}`;
 }
 
+const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+// I link automatici di Airbnb/Booking potrebbero inserire le date in un
+// formato diverso da YYYY-MM-DD a seconda della lingua dell'host/ospite
+// (es. 13/08/2026). Se il parametro non è ISO valido lo scartiamo invece
+// di rischiare di interpretarlo male: l'ospite lo inserirà a mano.
+function parseIsoDateParam(value) {
+  return value && ISO_DATE_RE.test(value) ? value : "";
+}
+
 const EMPTY_GUEST = {
   firstName: "",
   lastName: "",
@@ -303,29 +314,32 @@ function GuestCheckin() {
   const c = COPY[lang] ?? COPY.en;
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const bookingRef = searchParams.get("ref") || "";
-  const urlArrival = searchParams.get("arrival") || "";
-  const urlDeparture = searchParams.get("departure") || "";
+  const rawRef = searchParams.get("ref") || "";
+  const urlArrival = parseIsoDateParam(searchParams.get("arrival"));
+  const urlDeparture = parseIsoDateParam(searchParams.get("departure"));
+  // Il ref da solo basta: se la prenotazione esiste già a DB (l'ha aperta
+  // prima qualcun altro), recuperiamo le sue date da lì. Le date nell'URL
+  // sono solo un aiuto per crearla la prima volta.
+  const bookingRef = rawRef;
 
-  const [codeInput, setCodeInput] = useState("");
+  const [codeInput, setCodeInput] = useState(rawRef);
   const [codeArrival, setCodeArrival] = useState("");
   const [codeDeparture, setCodeDeparture] = useState("");
-  const [codeError, setCodeError] = useState("");
+  const [toastMessage, setToastMessage] = useState("");
 
   function handleCodeSubmit(e) {
     e.preventDefault();
 
     const todayIso = dateOnlyIso(new Date());
     if (codeArrival < todayIso) {
-      setCodeError(c.errorArrivalPast);
+      setToastMessage(c.errorArrivalPast);
       return;
     }
     if (codeDeparture <= codeArrival) {
-      setCodeError(c.errorDepartureBeforeArrival);
+      setToastMessage(c.errorDepartureBeforeArrival);
       return;
     }
 
-    setCodeError("");
     const params = new URLSearchParams({
       ref: codeInput.trim(),
       arrival: codeArrival,
@@ -345,13 +359,13 @@ function GuestCheckin() {
   const [notes, setNotes] = useState("");
   const [guests, setGuests] = useState([{ ...EMPTY_GUEST }]);
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
-  const [errorMessage, setErrorMessage] = useState("");
   const [savedGuests, setSavedGuests] = useState([]);
   const [bookingStatus, setBookingStatus] = useState(null); // null | draft | complete
   const [hasDocument, setHasDocument] = useState(false);
   const [removingIndex, setRemovingIndex] = useState(null);
   const [linkCopied, setLinkCopied] = useState(false);
   const [initialLoading, setInitialLoading] = useState(Boolean(bookingRef));
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const [pendingFinalize, setPendingFinalize] = useState(false);
 
   async function handleShare() {
@@ -379,30 +393,55 @@ function GuestCheckin() {
       .then((res) => res.json())
       .then((data) => {
         if (data.exists) {
+          setArrivalDate(data.arrivalDate.slice(0, 10));
+          setDepartureDate(data.departureDate.slice(0, 10));
           setSavedGuests(data.guests || []);
           setBookingStatus(data.status);
           setHasDocument(Boolean(data.hasDocument));
+          setBookingConfirmed(true);
         }
+        return data;
       })
-      .catch(() => {});
+      .catch(() => null);
   }
 
   useEffect(() => {
-    if (!bookingRef || !urlArrival || !urlDeparture) {
+    if (!bookingRef) {
       setInitialLoading(false);
       return;
     }
 
-    fetch("/api/booking", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ bookingRef, arrivalDate: urlArrival, departureDate: urlDeparture }),
-    })
-      .then(refreshBooking)
-      .catch(() => {})
+    // Il ref potrebbe già esistere a DB (creato da chi ha aperto prima lo
+    // stesso link): se sì, usiamo le sue date invece di richiederle di
+    // nuovo. Solo se non esiste ancora e abbiamo date valide nell'URL la
+    // creiamo noi ora.
+    fetch(`/api/booking?ref=${encodeURIComponent(bookingRef)}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.exists) {
+          setArrivalDate(data.arrivalDate.slice(0, 10));
+          setDepartureDate(data.departureDate.slice(0, 10));
+          setSavedGuests(data.guests || []);
+          setBookingStatus(data.status);
+          setHasDocument(Boolean(data.hasDocument));
+          setBookingConfirmed(true);
+          return;
+        }
+        if (urlArrival && urlDeparture) {
+          return fetch("/api/booking", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ bookingRef, arrivalDate: urlArrival, departureDate: urlDeparture }),
+          })
+            .then(refreshBooking)
+            .then(() => setBookingConfirmed(true));
+        }
+        setBookingConfirmed(false);
+      })
+      .catch(() => setBookingConfirmed(false))
       .finally(() => setInitialLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bookingRef, urlArrival, urlDeparture]);
+  }, [bookingRef]);
 
   // Se al caricamento la prenotazione ha già raggiunto la capienza
   // massima, non mostriamo la card ospite vuota di default.
@@ -454,11 +493,9 @@ function GuestCheckin() {
     const todayIso = dateOnlyIso(new Date());
     const hasFutureBirthDate = guests.some((g) => g.birthDate && g.birthDate > todayIso);
     if (hasFutureBirthDate) {
-      setStatus("error");
-      setErrorMessage(c.errorBirthDateFuture);
+      setToastMessage(c.errorBirthDateFuture);
       return;
     }
-    setErrorMessage("");
 
     const finalize = e.nativeEvent.submitter?.dataset.finalize === "true";
     if (finalize && bookingRef) {
@@ -488,48 +525,8 @@ function GuestCheckin() {
         refreshBooking();
       }
     } catch {
-      setErrorMessage("");
       setStatus("error");
     }
-  }
-
-  if (!bookingRef) {
-    return (
-      <div className="page section-page section-page-guestcheckin">
-        <div className="section-title-row">
-          <UserPlus className="section-title-icon" size={24} strokeWidth={1.75} />
-          <h1 className="section-title">{c.codeStepTitle}</h1>
-        </div>
-        <p className="section-subtitle">{c.codeStepSubtitle}</p>
-        <hr className="section-title-divider" />
-
-        <form className="guestcheckin-form" onSubmit={handleCodeSubmit}>
-          <label>
-            {c.codeLabel}
-            <input
-              required
-              value={codeInput}
-              placeholder={c.codePlaceholder}
-              onChange={(e) => setCodeInput(e.target.value)}
-            />
-          </label>
-          <div className="guestcheckin-row">
-            <label>
-              {c.arrival}
-              <DateField required lang={lang} value={codeArrival} onChange={setCodeArrival} />
-            </label>
-            <label>
-              {c.departure}
-              <DateField required lang={lang} value={codeDeparture} onChange={setCodeDeparture} />
-            </label>
-          </div>
-          {codeError && <p className="guestcheckin-error">{codeError}</p>}
-          <button type="submit" className="guestcheckin-submit">
-            {c.codeContinue}
-          </button>
-        </form>
-      </div>
-    );
   }
 
   if (initialLoading) {
@@ -560,6 +557,45 @@ function GuestCheckin() {
     );
   }
 
+  if (!bookingConfirmed) {
+    return (
+      <div className="page section-page section-page-guestcheckin">
+        <Toast message={toastMessage} onClose={() => setToastMessage("")} />
+        <div className="section-title-row">
+          <UserPlus className="section-title-icon" size={24} strokeWidth={1.75} />
+          <h1 className="section-title">{c.codeStepTitle}</h1>
+        </div>
+        <p className="section-subtitle">{c.codeStepSubtitle}</p>
+        <hr className="section-title-divider" />
+
+        <form className="guestcheckin-form" onSubmit={handleCodeSubmit}>
+          <label>
+            {c.codeLabel}
+            <input
+              required
+              value={codeInput}
+              placeholder={c.codePlaceholder}
+              onChange={(e) => setCodeInput(e.target.value)}
+            />
+          </label>
+          <div className="guestcheckin-row">
+            <label>
+              {c.arrival}
+              <DateField required lang={lang} value={codeArrival} onChange={setCodeArrival} />
+            </label>
+            <label>
+              {c.departure}
+              <DateField required lang={lang} value={codeDeparture} onChange={setCodeDeparture} />
+            </label>
+          </div>
+          <button type="submit" className="guestcheckin-submit">
+            {c.codeContinue}
+          </button>
+        </form>
+      </div>
+    );
+  }
+
   if (status === "success" || bookingStatus === "complete") {
     return (
       <div className="page section-page section-page-guestcheckin">
@@ -573,6 +609,7 @@ function GuestCheckin() {
 
   return (
     <div className="page section-page section-page-guestcheckin">
+      <Toast message={toastMessage} onClose={() => setToastMessage("")} />
       {pendingFinalize && (
         <ConfirmDialog
           title={c.finalizeConfirmTitle}
@@ -605,19 +642,11 @@ function GuestCheckin() {
         <div className="guestcheckin-row">
           <label>
             {c.arrival}
-            {bookingRef && urlArrival ? (
-              <div className="guestcheckin-locked-date">{new Date(arrivalDate).toLocaleDateString(lang)}</div>
-            ) : (
-              <DateField required lang={lang} value={arrivalDate} onChange={setArrivalDate} />
-            )}
+            <div className="guestcheckin-locked-date">{new Date(arrivalDate).toLocaleDateString(lang)}</div>
           </label>
           <label>
             {c.departure}
-            {bookingRef && urlDeparture ? (
-              <div className="guestcheckin-locked-date">{new Date(departureDate).toLocaleDateString(lang)}</div>
-            ) : (
-              <DateField required lang={lang} value={departureDate} onChange={setDepartureDate} />
-            )}
+            <div className="guestcheckin-locked-date">{new Date(departureDate).toLocaleDateString(lang)}</div>
           </label>
         </div>
 
@@ -705,7 +734,7 @@ function GuestCheckin() {
           </button>
         )}
 
-        {status === "error" && <p className="guestcheckin-error">{errorMessage || c.error}</p>}
+        {status === "error" && <p className="guestcheckin-error">{c.error}</p>}
         {bookingRef && !canFinish && <p className="guestcheckin-max-guests">{c.noDocumentYet}</p>}
 
         {bookingRef ? (
