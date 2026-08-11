@@ -42,6 +42,21 @@
   gap: 12px;
 }
 
+.site-footer {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px;
+  text-align: center;
+}
+
+.site-footer a {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 @media (max-width: 480px) {
   .site-bar-name {
     font-size: 1.05rem;

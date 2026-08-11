@@ -26,6 +26,12 @@ import {
   Navigation,
   ParkingCircle,
   Footprints,
+  UserCheck,
+  Database,
+  Cookie,
+  Server,
+  ShieldCheck,
+  IdCard,
 } from "lucide-react";
 
 // Registro icone usate nelle voci di contenuto delle pagine interne (InfoBlock).
@@ -57,6 +63,12 @@ const infoIcons = {
   Navigation,
   ParkingCircle,
   Footprints,
+  UserCheck,
+  Database,
+  Cookie,
+  Server,
+  ShieldCheck,
+  IdCard,
 };
 
 export default infoIcons;

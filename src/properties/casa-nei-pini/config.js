@@ -7,10 +7,20 @@ const config = {
     position: [44.3623255, 8.5665055],
     mapsLink: "https://maps.app.goo.gl/BPrxUKG2ZyoEczc46",
   },
+  // Capienza massima dell'annuncio (Airbnb/Booking): limita il numero di
+  // ospiti inseribili nel form di check-in online.
+  maxGuests: 8,
   // Destinatario delle richieste di preventivo dalla pagina Disponibilità.
   quoteContact: {
     email: "mcerruti00@gmail.com",
     whatsapp: "393481138760",
+  },
+  // Dati per l'informativa privacy e per il CIN mostrato in Contatti.
+  legal: {
+    controllerName: "Matteo Cerruti",
+    controllerEmail: "mcerruti00@gmail.com",
+    vatNumber: null,
+    cin: "IT009065C2YD8C9P35",
   },
   // Stanze mostrate in pagina Stanze: id -> cartella foto in assets/photos/apartment/<id>,
   // titleKey -> chiave in translations/*.js sotto common.

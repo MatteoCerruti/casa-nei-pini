@@ -2,6 +2,21 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## TODO prima di andare live
+
+- [x] ~~Clerk: disattivare "Sign-up with email"~~ — fatto su entrambe le
+      istanze (Casa nei Pini e Vista dai Pini), Dev e Production.
+- [x] ~~Account admin Vista dai Pini~~ — fatto.
+- [x] ~~iCal reali Vista dai Pini~~ — già impostati su Vercel (Production)
+      per entrambi i progetti.
+- [x] ~~`npm run build` di prova (casa-nei-pini e vista-dai-pini)~~ —
+      nessun errore.
+- [x] ~~Deploy in produzione~~ — live su https://casa-nei-pini.vercel.app
+      e https://vista-dai-pini.vercel.app.
+- [ ] Automatizzare l'invio del link di check-in (`/checkin-online?ref=...`)
+      dai messaggi automatici di Airbnb/Booking agli ospiti — a mano, lato
+      host, nei rispettivi pannelli (non automatizzabile da qui).
+
 ## Multi-tenant: più appartamenti sulla stessa codebase
 
 Il codice (pagine, componenti, layout) è condiviso tra tutti gli appartamenti.

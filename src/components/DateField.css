@@ -1,0 +1,183 @@
+.date-field {
+  position: relative;
+}
+
+.date-field-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+  transition: border-color var(--transition-fast);
+}
+
+.date-field-trigger:focus-within {
+  border-color: var(--color-accent);
+}
+
+.date-field-trigger .date-field-input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  padding: 10px 0 10px 12px;
+  border: none;
+  border-radius: 0;
+  background: none;
+  color: var(--color-text);
+}
+
+.date-field-trigger .date-field-input:focus {
+  outline: none;
+  border: none;
+}
+
+.date-field-input::placeholder {
+  color: var(--color-muted);
+}
+
+.date-field-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border: none;
+  background: none;
+  color: var(--color-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.date-field-hidden-required {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  height: 1px;
+  width: 1px;
+}
+
+.date-field-popover {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  left: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+}
+
+.date-field-popover .rdp-root {
+  --rdp-accent-color: var(--color-accent);
+  --rdp-accent-background-color: var(--color-accent);
+  --rdp-day-height: 36px;
+  --rdp-day-width: 36px;
+  --rdp-font-family: var(--font-body);
+  --rdp-selected-color: var(--color-on-accent);
+  color: var(--color-text);
+}
+
+.date-field-popover .rdp-day_button:hover {
+  background: var(--color-surface);
+}
+
+.date-field-popover .rdp-dropdown,
+.date-field-popover select {
+  font-family: var(--font-body);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
+
+.date-field-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px 4px 8px;
+}
+
+.date-field-caption-btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-transform: capitalize;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background var(--transition-fast);
+}
+
+.date-field-caption-btn:hover {
+  background: var(--color-surface);
+}
+
+.date-field-grid-panel {
+  width: 260px;
+  padding: 4px;
+}
+
+.date-field-grid-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 4px 4px 12px;
+}
+
+.date-field-grid-header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.date-field-grid-header button:hover {
+  background: var(--color-surface);
+}
+
+.date-field-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.date-field-grid-cell {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  padding: 10px 6px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.date-field-grid-cell:hover {
+  border-color: var(--color-accent);
+}
+
+.date-field-grid-cell.active {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}

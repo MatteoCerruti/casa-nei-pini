@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { SignedIn, UserButton } from "@clerk/clerk-react";
 import { useLanguage } from "../LanguageContext";
 import LanguageSelector from "./LanguageSelector";
 import ThemeToggle from "./ThemeToggle";
@@ -27,10 +28,16 @@ function Layout() {
           <div className="site-bar-actions">
             <LanguageSelector />
             <ThemeToggle />
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
         </div>
       </header>
       <Outlet />
+      <footer className="site-footer">
+        <Link to="/privacy">{t.common.privacyLink}</Link>
+      </footer>
     </>
   );
 }
