@@ -432,12 +432,12 @@ function Admin() {
                         {ci.guests.map((g, i) => (
                           <div key={i} style={{ borderTop: "1px solid var(--color-border)", paddingTop: "8px", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "6px 10px" }}>
                             <span className="admin-guest-index">{i + 1}</span>
-                            <CopyField label={c.labelFirstName} value={g.firstName} />
-                            <CopyField label={c.labelLastName} value={g.lastName} />
                             {g.gender && <CopyField label={c.labelGender} value={g.gender} />}
+                            <CopyField label={c.labelLastName} value={g.lastName} />
+                            <CopyField label={c.labelFirstName} value={g.firstName} />
                             <CopyField label={c.labelBirthDate} value={g.birthDate && new Date(g.birthDate).toLocaleDateString(locale)} />
-                            <CopyField label={c.labelBirthPlace} value={g.birthPlace} />
                             <CopyField label={c.labelNationality} value={g.nationality} />
+                            <CopyField label={c.labelBirthPlace} value={g.birthPlace} />
                             {g.documentType && <CopyField label={c.labelDocType} value={g.documentType} />}
                             {g.documentNumber && <CopyField label={c.labelDocNumber} value={g.documentNumber} />}
                           </div>

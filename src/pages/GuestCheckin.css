@@ -362,6 +362,18 @@
 
   .guestcheckin-sidebar {
     position: static;
-    order: -1;
+    display: contents;
+  }
+
+  .guestcheckin-form {
+    order: 2;
+  }
+
+  .guestcheckin-saved-list {
+    order: 1;
+  }
+
+  .guestcheckin-invite {
+    order: 3;
   }
 }

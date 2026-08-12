@@ -501,8 +501,16 @@ function GuestCheckin() {
   function handleFormSubmit(e) {
     e.preventDefault();
 
-    const hasMissingBirthDate = guests.some((g) => !g.birthDate);
-    if (hasMissingBirthDate) {
+    const hasMissingFields = guests.some((g, i) => {
+      if (!g.firstName?.trim() || !g.lastName?.trim() || !g.birthDate || !g.birthPlace?.trim() || !g.nationality?.trim() || !g.gender) {
+        return true;
+      }
+      if (i === 0 && !hasDocument && (!g.documentType?.trim() || !g.documentNumber?.trim())) {
+        return true;
+      }
+      return false;
+    });
+    if (hasMissingFields) {
       setToastMessage(c.errorRequiredFields);
       return;
     }
@@ -688,11 +696,11 @@ function GuestCheckin() {
             <div className="guestcheckin-row">
               <label>
                 {c.firstName}
-                <input required value={guest.firstName} onChange={(e) => updateGuest(i, "firstName", e.target.value)} />
+                <input value={guest.firstName} onChange={(e) => updateGuest(i, "firstName", e.target.value)} />
               </label>
               <label>
                 {c.lastName}
-                <input required value={guest.lastName} onChange={(e) => updateGuest(i, "lastName", e.target.value)} />
+                <input value={guest.lastName} onChange={(e) => updateGuest(i, "lastName", e.target.value)} />
               </label>
             </div>
             <div className="guestcheckin-row">
@@ -702,17 +710,17 @@ function GuestCheckin() {
               </label>
               <label>
                 {c.birthPlace}
-                <input required value={guest.birthPlace} onChange={(e) => updateGuest(i, "birthPlace", e.target.value)} />
+                <input value={guest.birthPlace} onChange={(e) => updateGuest(i, "birthPlace", e.target.value)} />
               </label>
             </div>
             <div className="guestcheckin-row">
               <label>
                 {c.nationality}
-                <input required value={guest.nationality} onChange={(e) => updateGuest(i, "nationality", e.target.value)} />
+                <input value={guest.nationality} onChange={(e) => updateGuest(i, "nationality", e.target.value)} />
               </label>
               <label>
                 {c.gender}
-                <select required value={guest.gender} onChange={(e) => updateGuest(i, "gender", e.target.value)}>
+                <select value={guest.gender} onChange={(e) => updateGuest(i, "gender", e.target.value)}>
                   <option value="" disabled></option>
                   {c.genders.map((g) => (
                     <option key={g.value} value={g.value}>{g.label}</option>
@@ -725,7 +733,7 @@ function GuestCheckin() {
                 <div className="guestcheckin-row">
                   <label>
                     {c.documentType}
-                    <select required value={guest.documentType} onChange={(e) => updateGuest(i, "documentType", e.target.value)}>
+                    <select value={guest.documentType} onChange={(e) => updateGuest(i, "documentType", e.target.value)}>
                       <option value="" disabled></option>
                       {c.documentTypes.map((docType) => (
                         <option key={docType} value={docType}>{docType}</option>
@@ -734,7 +742,7 @@ function GuestCheckin() {
                   </label>
                   <label>
                     {c.documentNumber}
-                    <input required value={guest.documentNumber} onChange={(e) => updateGuest(i, "documentNumber", e.target.value)} />
+                    <input value={guest.documentNumber} onChange={(e) => updateGuest(i, "documentNumber", e.target.value)} />
                   </label>
                 </div>
               </>
