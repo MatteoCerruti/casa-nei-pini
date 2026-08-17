@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { SignedIn, UserButton } from "@clerk/clerk-react";
 import { useLanguage } from "../LanguageContext";
 import LanguageSelector from "./LanguageSelector";
@@ -9,6 +9,7 @@ import "./Layout.css";
 
 function Layout() {
   const { t } = useLanguage();
+  const location = useLocation();
 
   // Il <title> statico in public/index.html è condiviso da tutte le
   // proprietà (public/ non passa da REACT_APP_PROPERTY_ID): lo aggiorniamo
@@ -18,7 +19,7 @@ function Layout() {
   }, [t]);
 
   return (
-    <>
+    <div className="site-layout">
       <header className="site-bar">
         <div className="site-bar-inner">
           <Link to="/" className="site-bar-name">
@@ -34,11 +35,17 @@ function Layout() {
           </div>
         </div>
       </header>
-      <Outlet />
-      <footer className="site-footer">
-        <Link to="/privacy">{t.common.privacyLink}</Link>
-      </footer>
-    </>
+      <div className="site-layout-content">
+        <Outlet />
+      </div>
+      {location.pathname !== "/privacy" && (
+        <footer className="site-footer">
+          <div className="site-footer-inner">
+            <Link to="/privacy">{t.common.privacyLink}</Link>
+          </div>
+        </footer>
+      )}
+    </div>
   );
 }
 

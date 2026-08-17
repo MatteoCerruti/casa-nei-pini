@@ -38,6 +38,9 @@ const it = {
     bin2Title: "Bidoni scendendo verso Varazze",
     whatsappAction: "WhatsApp",
     openInMapsShort: "Apri in Maps",
+    privacyLink: "Privacy",
+    cinLabel: "Codice identificativo (CIN)",
+    privacyLinkText: "Leggi l'informativa privacy",
   },
   nav: {
     checkin: { title: "Check-in", desc: "Come entrare in casa" },

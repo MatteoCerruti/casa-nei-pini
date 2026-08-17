@@ -333,6 +333,17 @@
   font-weight: 600;
 }
 
+.guestcheckin-privacy-note {
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.guestcheckin-privacy-note a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
 .guestcheckin-success {
   display: flex;
   flex-direction: column;

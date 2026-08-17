@@ -34,6 +34,9 @@ const en = {
     bin2Title: "Bins going down toward Varazze",
     whatsappAction: "WhatsApp",
     openInMapsShort: "Open in Maps",
+    privacyLink: "Privacy",
+    cinLabel: "Property ID code (CIN)",
+    privacyLinkText: "Read our privacy notice",
   },
   nav: {
     checkin: { title: "Check-in", desc: "How to get into the house" },

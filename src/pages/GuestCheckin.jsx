@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { UserPlus, Trash2, CheckCircle2, Share2, Check, Loader2 } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 import DateField from "../components/DateField";
@@ -57,6 +57,9 @@ const COPY = {
     success: "Registrazione inviata! Ti aspettiamo.",
     error: "Qualcosa è andato storto, riprova o contattaci direttamente.",
     documentTypes: ["Carta d'identità", "Passaporto", "Patente"],
+    privacyNotePrefix: "Inviando questi dati dichiari di aver preso visione dell'",
+    privacyLinkLabel: "informativa privacy",
+    privacyNoteSuffix: ". I dati vengono usati solo per la registrazione obbligatoria in Questura e per la gestione del soggiorno.",
     gender: "Genere",
     genders: [
       { value: "F", label: "Femmina" },
@@ -112,6 +115,9 @@ const COPY = {
     success: "Registration sent! See you soon.",
     error: "Something went wrong, please try again or contact us directly.",
     documentTypes: ["ID card", "Passport", "Driving licence"],
+    privacyNotePrefix: "By submitting this form you confirm you have read our ",
+    privacyLinkLabel: "privacy notice",
+    privacyNoteSuffix: ". Your data is used only for the mandatory registration with the local Police and to manage your stay.",
     gender: "Gender",
     genders: [
       { value: "F", label: "Female" },
@@ -167,6 +173,9 @@ const COPY = {
     success: "Enregistrement envoyé ! À bientôt.",
     error: "Une erreur est survenue, réessayez ou contactez-nous directement.",
     documentTypes: ["Carte d'identité", "Passeport", "Permis de conduire"],
+    privacyNotePrefix: "En envoyant ce formulaire, vous confirmez avoir pris connaissance de notre ",
+    privacyLinkLabel: "politique de confidentialité",
+    privacyNoteSuffix: ". Vos données ne sont utilisées que pour l'enregistrement obligatoire auprès de la police locale et pour la gestion de votre séjour.",
     gender: "Genre",
     genders: [
       { value: "F", label: "Femme" },
@@ -222,6 +231,9 @@ const COPY = {
     success: "¡Registro enviado! Te esperamos.",
     error: "Algo salió mal, inténtalo de nuevo o contáctanos directamente.",
     documentTypes: ["DNI", "Pasaporte", "Carné de conducir"],
+    privacyNotePrefix: "Al enviar este formulario confirmas que has leído nuestra ",
+    privacyLinkLabel: "política de privacidad",
+    privacyNoteSuffix: ". Tus datos solo se usan para el registro obligatorio ante la policía local y para gestionar tu estancia.",
     gender: "Género",
     genders: [
       { value: "F", label: "Mujer" },
@@ -277,6 +289,9 @@ const COPY = {
     success: "Registrierung gesendet! Wir freuen uns auf dich.",
     error: "Etwas ist schiefgelaufen, versuche es erneut oder kontaktiere uns direkt.",
     documentTypes: ["Personalausweis", "Reisepass", "Führerschein"],
+    privacyNotePrefix: "Mit dem Absenden dieses Formulars bestätigst du, unsere ",
+    privacyLinkLabel: "Datenschutzerklärung",
+    privacyNoteSuffix: " gelesen zu haben. Deine Daten werden nur für die verpflichtende Meldung bei der Polizei und für die Verwaltung deines Aufenthalts verwendet.",
     gender: "Geschlecht",
     genders: [
       { value: "F", label: "Weiblich" },
@@ -758,6 +773,12 @@ function GuestCheckin() {
             {c.addGuest}
           </button>
         )}
+
+        <p className="guestcheckin-privacy-note">
+          {c.privacyNotePrefix}
+          <Link to="/privacy" target="_blank" rel="noopener noreferrer">{c.privacyLinkLabel}</Link>
+          {c.privacyNoteSuffix}
+        </p>
 
         {status === "error" && <p className="guestcheckin-error">{c.error}</p>}
         {bookingRef && !canFinish && <p className="guestcheckin-max-guests">{c.noDocumentYet}</p>}

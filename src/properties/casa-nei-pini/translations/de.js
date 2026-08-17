@@ -34,6 +34,9 @@ const de = {
     bin2Title: "Container bergab Richtung Varazze",
     whatsappAction: "WhatsApp",
     openInMapsShort: "In Maps öffnen",
+    privacyLink: "Datenschutz",
+    cinLabel: "Identifikationscode (CIN)",
+    privacyLinkText: "Datenschutzerklärung lesen",
   },
   nav: {
     checkin: { title: "Check-in", desc: "So kommt ihr ins Haus" },

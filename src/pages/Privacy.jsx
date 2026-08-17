@@ -12,13 +12,14 @@ function Privacy() {
   const { t } = useLanguage();
   const p = t.pages.privacy;
   const { controllerName, controllerEmail } = config.legal;
+  const { address } = config.location;
 
   return (
     <SectionShell icon={Shield} sectionKey="privacy">
       <InfoBlock
         icon="UserCheck"
         label={p.controller.label}
-        text={fillTemplate(p.controller.text, { name: controllerName, email: controllerEmail })}
+        text={fillTemplate(p.controller.text, { name: controllerName, email: controllerEmail, address })}
       />
       {p.sections.map((item, i) => (
         <InfoBlock key={i} icon={item.icon} label={item.label} text={item.text} />

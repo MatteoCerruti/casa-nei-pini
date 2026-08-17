@@ -38,6 +38,9 @@ const fr = {
     bin2Title: "Bennes en descendant vers Varazze",
     whatsappAction: "WhatsApp",
     openInMapsShort: "Ouvrir sur Maps",
+    privacyLink: "Confidentialité",
+    cinLabel: "Code d'identification (CIN)",
+    privacyLinkText: "Lire notre politique de confidentialité",
   },
   nav: {
     checkin: { title: "Arrivée", desc: "Comment entrer dans la maison" },

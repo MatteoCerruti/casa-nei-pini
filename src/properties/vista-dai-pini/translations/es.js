@@ -38,6 +38,9 @@ const es = {
     bin2Title: "Contenedores bajando hacia Varazze",
     whatsappAction: "WhatsApp",
     openInMapsShort: "Abrir en Maps",
+    privacyLink: "Privacidad",
+    cinLabel: "Código identificativo (CIN)",
+    privacyLinkText: "Leer nuestra política de privacidad",
   },
   nav: {
     checkin: { title: "Check-in", desc: "Cómo entrar a la casa" },
