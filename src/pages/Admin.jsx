@@ -23,6 +23,7 @@ const COPY = {
     labelGender: "Genere",
     labelBirthDate: "Nascita",
     labelBirthPlace: "Luogo nascita",
+    labelResidencePlace: "Residenza",
     labelNationality: "Cittadinanza",
     labelDocType: "Documento",
     labelDocNumber: "N. documento",
@@ -50,6 +51,7 @@ const COPY = {
     labelGender: "Gender",
     labelBirthDate: "Birth date",
     labelBirthPlace: "Birth place",
+    labelResidencePlace: "Residence",
     labelNationality: "Nationality",
     labelDocType: "Document",
     labelDocNumber: "Doc. number",
@@ -77,6 +79,7 @@ const COPY = {
     labelGender: "Genre",
     labelBirthDate: "Naissance",
     labelBirthPlace: "Lieu de naissance",
+    labelResidencePlace: "Résidence",
     labelNationality: "Nationalité",
     labelDocType: "Document",
     labelDocNumber: "N° document",
@@ -104,6 +107,7 @@ const COPY = {
     labelGender: "Género",
     labelBirthDate: "Nacimiento",
     labelBirthPlace: "Lugar de nacimiento",
+    labelResidencePlace: "Residencia",
     labelNationality: "Nacionalidad",
     labelDocType: "Documento",
     labelDocNumber: "N.º documento",
@@ -131,6 +135,7 @@ const COPY = {
     labelGender: "Geschlecht",
     labelBirthDate: "Geburt",
     labelBirthPlace: "Geburtsort",
+    labelResidencePlace: "Wohnort",
     labelNationality: "Staatsangehörigkeit",
     labelDocType: "Dokument",
     labelDocNumber: "Dok.-Nr.",
@@ -438,6 +443,7 @@ function Admin() {
                             <CopyField label={c.labelBirthDate} value={g.birthDate && new Date(g.birthDate).toLocaleDateString(locale)} />
                             <CopyField label={c.labelNationality} value={g.nationality} />
                             <CopyField label={c.labelBirthPlace} value={g.birthPlace} />
+                            {g.residencePlace && <CopyField label={c.labelResidencePlace} value={g.residencePlace} />}
                             {g.documentType && <CopyField label={c.labelDocType} value={g.documentType} />}
                             {g.documentNumber && <CopyField label={c.labelDocNumber} value={g.documentNumber} />}
                           </div>

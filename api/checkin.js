@@ -84,6 +84,7 @@ function isValidGuest(guest, requireDocument) {
     typeof guest.gender === "string" && guest.gender.trim() &&
     typeof guest.birthDate === "string" && guest.birthDate.trim() && guest.birthDate <= todayIso &&
     typeof guest.birthPlace === "string" && guest.birthPlace.trim() &&
+    typeof guest.residencePlace === "string" && guest.residencePlace.trim() &&
     typeof guest.nationality === "string" && guest.nationality.trim();
 
   if (!hasBaseFields) return false;

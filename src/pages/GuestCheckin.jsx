@@ -11,6 +11,7 @@ import "./GuestCheckin.css";
 const COPY = {
   it: {
     errorRequiredFields: "Compila tutti i campi obbligatori.",
+    errorMissingField: (field, n) => `Manca il campo "${field}" per l'ospite ${n}.`,
     errorArrivalPast: "La data di arrivo non può essere nel passato.",
     errorDepartureBeforeArrival: "La data di partenza deve essere successiva a quella di arrivo.",
     errorBirthDateFuture: "La data di nascita non può essere nel futuro.",
@@ -47,6 +48,7 @@ const COPY = {
     lastName: "Cognome",
     birthDate: "Data di nascita",
     birthPlace: "Luogo di nascita",
+    residencePlace: "Luogo di residenza",
     nationality: "Cittadinanza",
     documentType: "Tipo documento",
     documentNumber: "Numero documento",
@@ -69,6 +71,7 @@ const COPY = {
   },
   en: {
     errorRequiredFields: "Please fill in all required fields.",
+    errorMissingField: (field, n) => `Missing field "${field}" for guest ${n}.`,
     errorArrivalPast: "The arrival date cannot be in the past.",
     errorDepartureBeforeArrival: "The departure date must be after the arrival date.",
     errorBirthDateFuture: "The date of birth cannot be in the future.",
@@ -105,6 +108,7 @@ const COPY = {
     lastName: "Last name",
     birthDate: "Date of birth",
     birthPlace: "Place of birth",
+    residencePlace: "Place of residence",
     nationality: "Nationality",
     documentType: "Document type",
     documentNumber: "Document number",
@@ -127,6 +131,7 @@ const COPY = {
   },
   fr: {
     errorRequiredFields: "Veuillez remplir tous les champs obligatoires.",
+    errorMissingField: (field, n) => `Le champ « ${field} » manque pour l'hôte ${n}.`,
     errorArrivalPast: "La date d'arrivée ne peut pas être dans le passé.",
     errorDepartureBeforeArrival: "La date de départ doit être postérieure à la date d'arrivée.",
     errorBirthDateFuture: "La date de naissance ne peut pas être dans le futur.",
@@ -163,6 +168,7 @@ const COPY = {
     lastName: "Nom",
     birthDate: "Date de naissance",
     birthPlace: "Lieu de naissance",
+    residencePlace: "Lieu de résidence",
     nationality: "Nationalité",
     documentType: "Type de document",
     documentNumber: "Numéro de document",
@@ -185,6 +191,7 @@ const COPY = {
   },
   es: {
     errorRequiredFields: "Completa todos los campos obligatorios.",
+    errorMissingField: (field, n) => `Falta el campo "${field}" del huésped ${n}.`,
     errorArrivalPast: "La fecha de llegada no puede ser en el pasado.",
     errorDepartureBeforeArrival: "La fecha de salida debe ser posterior a la de llegada.",
     errorBirthDateFuture: "La fecha de nacimiento no puede ser en el futuro.",
@@ -221,6 +228,7 @@ const COPY = {
     lastName: "Apellido",
     birthDate: "Fecha de nacimiento",
     birthPlace: "Lugar de nacimiento",
+    residencePlace: "Lugar de residencia",
     nationality: "Nacionalidad",
     documentType: "Tipo de documento",
     documentNumber: "Número de documento",
@@ -243,6 +251,7 @@ const COPY = {
   },
   de: {
     errorRequiredFields: "Bitte fülle alle Pflichtfelder aus.",
+    errorMissingField: (field, n) => `Das Feld „${field}“ fehlt bei Gast ${n}.`,
     errorArrivalPast: "Das Ankunftsdatum darf nicht in der Vergangenheit liegen.",
     errorDepartureBeforeArrival: "Das Abreisedatum muss nach dem Ankunftsdatum liegen.",
     errorBirthDateFuture: "Das Geburtsdatum darf nicht in der Zukunft liegen.",
@@ -279,6 +288,7 @@ const COPY = {
     lastName: "Nachname",
     birthDate: "Geburtsdatum",
     birthPlace: "Geburtsort",
+    residencePlace: "Wohnort",
     nationality: "Staatsangehörigkeit",
     documentType: "Dokumenttyp",
     documentNumber: "Dokumentnummer",
@@ -324,10 +334,35 @@ const EMPTY_GUEST = {
   gender: "",
   birthDate: "",
   birthPlace: "",
+  residencePlace: "",
   nationality: "",
   documentType: "",
   documentNumber: "",
 };
+
+// Trova il primo campo obbligatorio mancante (in ordine di visualizzazione
+// nel form) così il messaggio d'errore può indicarlo per nome invece del
+// generico "compila tutti i campi": evita di far cercare a tentoni un
+// campo che magari sembra pieno (es. una data digitata a mano ma non
+// completata, che il DateField scarta senza segnalarlo visivamente).
+function findMissingField(guests, hasDocument, c) {
+  for (let i = 0; i < guests.length; i++) {
+    const g = guests[i];
+    const guestNumber = i + 1;
+    if (!g.firstName?.trim()) return { label: c.firstName, guestNumber };
+    if (!g.lastName?.trim()) return { label: c.lastName, guestNumber };
+    if (!g.birthDate) return { label: c.birthDate, guestNumber };
+    if (!g.birthPlace?.trim()) return { label: c.birthPlace, guestNumber };
+    if (!g.residencePlace?.trim()) return { label: c.residencePlace, guestNumber };
+    if (!g.nationality?.trim()) return { label: c.nationality, guestNumber };
+    if (!g.gender) return { label: c.gender, guestNumber };
+    if (i === 0 && !hasDocument) {
+      if (!g.documentType?.trim()) return { label: c.documentType, guestNumber };
+      if (!g.documentNumber?.trim()) return { label: c.documentNumber, guestNumber };
+    }
+  }
+  return null;
+}
 
 function GuestCheckin() {
   const { lang } = useLanguage();
@@ -516,17 +551,9 @@ function GuestCheckin() {
   function handleFormSubmit(e) {
     e.preventDefault();
 
-    const hasMissingFields = guests.some((g, i) => {
-      if (!g.firstName?.trim() || !g.lastName?.trim() || !g.birthDate || !g.birthPlace?.trim() || !g.nationality?.trim() || !g.gender) {
-        return true;
-      }
-      if (i === 0 && !hasDocument && (!g.documentType?.trim() || !g.documentNumber?.trim())) {
-        return true;
-      }
-      return false;
-    });
-    if (hasMissingFields) {
-      setToastMessage(c.errorRequiredFields);
+    const missingField = findMissingField(guests, hasDocument, c);
+    if (missingField) {
+      setToastMessage(c.errorMissingField(missingField.label, missingField.guestNumber));
       return;
     }
 
@@ -730,9 +757,15 @@ function GuestCheckin() {
             </div>
             <div className="guestcheckin-row">
               <label>
+                {c.residencePlace}
+                <input value={guest.residencePlace} onChange={(e) => updateGuest(i, "residencePlace", e.target.value)} />
+              </label>
+              <label>
                 {c.nationality}
                 <input value={guest.nationality} onChange={(e) => updateGuest(i, "nationality", e.target.value)} />
               </label>
+            </div>
+            <div className="guestcheckin-row">
               <label>
                 {c.gender}
                 <select value={guest.gender} onChange={(e) => updateGuest(i, "gender", e.target.value)}>
