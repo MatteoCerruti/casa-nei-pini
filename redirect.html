@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="refresh" content="0; url=https://casa-nei-pini.vercel.app/checkin-online">
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get('ref');
+  const url = 'https://casa-nei-pini.vercel.app/checkin-online' + (ref ? '?ref=' + ref : '');
+  window.location.href = url;
+</script>
 </head>
 <body>
 </body>
